@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Dopaminerjik Sistem Haritası</title>
+<title>Dopaminerjik Sistem Haritası — Mekanizma Komutanı</title>
 <meta name="description" content="Dopamin sentezi, transporterları, reseptörleri ve etki eden 60+ ajanın moleküler hedef haritası. Klinisyenler ve sağlık profesyonelleri için." />
 <meta name="author" content="Uzm. Dr. İsmail Can Çiftçi" />
 <meta property="og:title" content="Dopaminerjik Sistem Haritası" />
@@ -1329,7 +1329,7 @@ const AGENTS = [
     mechanism: 'Dopamin transporterı (DAT) bloğu → reuptake azalır → sinaptik DA artar. PFC\'de DAT seyrek olduğundan oradaki etki kısmen NET inhibisyonu ile DA artışına bağlanır.',
     clinical: 'ADHD birinci basamak. Narkolepsi. Bilişsel performans için off-label kullanılır.',
     caution: 'Hiperdopaminerjik kekemelik/Tourette\'i kötüleştirir. Bağımlılık potansiyeli (özellikle IR formlar). Kardiyovasküler risk.',
-    studies: ['MTA']
+    studies: ['MTA', 'STUTTER_TIC_MPH']
   },
   {
     id: 'bup', name: 'Bupropion', alias: 'Wellbutrin, Zyban · NDRI',
@@ -1400,7 +1400,8 @@ const AGENTS = [
     effect: 'Reversibl VMAT2 blokajı; striatal DA depolarını boşaltır.',
     mechanism: 'VMAT2 reversibl inhibisyonu; DA daha çok etkilenir (5-HT, NE\'den daha duyarlı). Hareket bozukluklarında kullanılır.',
     clinical: 'Huntington koresinde, tardiv diskinezide, Tourette\'de etkili.',
-    caution: 'Depresyon ve intihar düşüncesi (siyah kutu), parkinsonizm, sedasyon. CYP2D6 metabolize olur.'
+    caution: 'Depresyon ve intihar düşüncesi (siyah kutu), parkinsonizm, sedasyon. CYP2D6 metabolize olur.',
+    studies: ['STUTTER_REVIEW']
   },
   {
     id: 'valben', name: 'Valbenazin', alias: 'Ingrezza · VMAT2 yeni nesil',
@@ -1537,7 +1538,8 @@ const AGENTS = [
     effect: 'Yüksek afiniteli D2 antagonisti; klasik EPS profili.',
     mechanism: 'Saf D2 antagonisti (ek serotonerjik etki minimum). 4 dopaminerjik yolakta da bloke eder — mezolimbik antipsikotik etki, nigrostriatal EPS, tuberoinfundibular hiperprolaktinemi.',
     clinical: 'Akut psikoz, agitasyon (parenteral), Tourette, delirium.',
-    caution: 'EPS (akut distoni, parkinsonizm, akatizi, tardiv diskinezi), nöroleptik malign sendrom, QT uzaması, hiperprolaktinemi.'
+    caution: 'EPS (akut distoni, parkinsonizm, akatizi, tardiv diskinezi), nöroleptik malign sendrom, QT uzaması, hiperprolaktinemi.',
+    studies: ['STUTTER_HALO']
   },
   {
     id: 'cpz', name: 'Klorpromazin', alias: 'Largactil · İlk tipik antipsikotik',
@@ -1557,7 +1559,8 @@ const AGENTS = [
     effect: 'D2 + 5HT2A antagonisti; orta-düşük dozda EPS yoksun.',
     mechanism: 'D2 blokajına ek olarak 5-HT2A blokajı, prefrontal DA salımını dolaylı artırarak negatif semptomları ve EPS\'i azaltır. Yüksek dozlarda D2 baskınlığı ortaya çıkar.',
     clinical: 'Şizofreni, otizm irritabilitesi, demans davranışsal semptomları (dikkatli), refrakter Tourette ve kekemelik.',
-    caution: 'Hiperprolaktinemi (D2 antagonistleri arasında en yüksek), kilo alımı, metabolik sendrom, sedasyon.'
+    caution: 'Hiperprolaktinemi (D2 antagonistleri arasında en yüksek), kilo alımı, metabolik sendrom, sedasyon.',
+    studies: ['STUTTER_RISP', 'STUTTER_REVIEW']
   },
   {
     id: 'olan', name: 'Olanzapin', alias: 'Zyprexa · Atipik · Geniş profilli',
@@ -1568,7 +1571,7 @@ const AGENTS = [
     mechanism: 'D2, 5-HT2A, H1, M, α1 antagonisti. Risperidondan EPS riski daha düşük, ama metabolik yan etkiler (kilo, lipid, glukoz) en yüksek.',
     clinical: 'Şizofreni, bipolar mani, kanser kemoterapi bulantısı (off-label, çok etkili).',
     caution: 'Belirgin kilo alımı, diabetogenez, dislipidemi, sedasyon. Tedaviye uyum metabolik yan etkilerle güçleşir.',
-    studies: ['CATIE']
+    studies: ['CATIE', 'STUTTER_OLAN']
   },
   {
     id: 'quet', name: 'Ketiapin', alias: 'Seroquel · Atipik · Düşük doz uyku, yüksek doz antipsikotik',
@@ -1599,7 +1602,8 @@ const AGENTS = [
     effect: 'D2 ve 5-HT1A parsiyel agonisti, 5-HT2A antagonisti — "dopamin stabilizatörü".',
     mechanism: 'D2 parsiyel agonisti — yüksek DA varsa antagonist gibi davranır, düşük DA varsa zayıf agonist gibi. Mezolimbikte antipsikotik etki, nigrostriatal/tuberoinfundibularde DA tonusunu fazla düşürmez.',
     clinical: 'Şizofreni, bipolar, depresyon adjuvanı, otizm irritabilitesi, Tourette.',
-    caution: 'Daha az hiperprolaktinemi, daha az kilo alımı. Ama akatizi belirgin. Patolojik kumar/hiperseksüalite (parsiyel agonizm).'
+    caution: 'Daha az hiperprolaktinemi, daha az kilo alımı. Ama akatizi belirgin. Patolojik kumar/hiperseksüalite (parsiyel agonizm).',
+    studies: ['STUTTER_REVIEW']
   },
   {
     id: 'cari', name: 'Karipirazin', alias: 'Vraylar · D3 selektif parsiyel agonist',
@@ -1701,6 +1705,94 @@ const AGENTS = [
     mechanism: 'Benzodiazepin bağlanma bölgesinden farklı bir alanda GABA-A pozitif allosterik modülasyonu. Çocuklarda papatya çayı şeklinde tarihsel sedatif olarak kullanılır.',
     clinical: 'Hafif anksiyolitik, uyku desteği. Doza ve formulasyona göre etki değişken.',
     caution: 'Yüksek doz östrojenik etki gösterebilir. Kumadin ile etkileşim teorik.'
+  },
+
+  {
+    id: 'ecopipam', name: 'Ekopipam', alias: 'SCH-39166 · D1 selektif antagonist',
+    category: 'antagonist',
+    targets: ['receptor-d1'],
+    regions: ['nigrostriatal'],
+    effect: 'Selektif D1 reseptör antagonisti — D2 ajanlarının metabolik/EPS yükü olmadan dopaminerjik modülasyon.',
+    mechanism: 'D1 ailesi selektif antagonisti; striatal "direct pathway" (D1-baskın MSN\'ler) sinyalini baskılar. Bu, hiperdopaminerjik kekemelik ve Tourette\'de motor seçim devresinin teorik düzeltme noktası. D2 antagonistlerinden farklı olarak hiperprolaktinemi, kilo alımı, akatizi ve EPS yapmaz.',
+    clinical: 'Kekemelikte (Maguire 2019 açık etiketli pilot — olumlu) ve Tourette\'de faz çalışmaları sürmektedir. Henüz onaylı endikasyon yok ama mekanizma açısından kekemelik için en heyecan verici ajanlardan.',
+    caution: 'Geliştirme aşamasında — uzun-vadeli D1 blokajının motivasyonel sistemler üzerindeki etkileri (anhedoni eğilimi, çekilme benzeri tablo) tam aydınlanmadı.',
+    studies: ['STUTTER_ECO', 'STUTTER_REVIEW']
+  },
+  {
+    id: 'pagoclone', name: 'Pagoclone', alias: 'GABA-A α2/α3 pozitif allosterik modülatör',
+    category: 'modulator',
+    targets: [],
+    regions: ['nigrostriatal'],
+    effect: 'Selektif GABA-A α2/α3 PAM — kekemelik için spesifik geliştirilen ilk ajan.',
+    mechanism: 'Siklopirolon yapılı, klasik benzodiazepin yan etkileri (sedasyon, bağımlılık, kognitif bozulma) olmadan GABA-A α2/α3 subunit selektif pozitif allosterik modülasyon. Kekemelik hipotezi: bazal gangliyon–talamokortikal döngüdeki GABAerjik gating bozukluğunu düzeltir, böylece hiperdopaminerjik motor seçim devresi stabilize olur. Dopaminerjik nodlara doğrudan dokunmaz.',
+    clinical: 'Maguire 2010 EXPRESS faz II RKÇ\'sinde %19.4 vs %5.1 syllables-stuttered düşüş, 1 yılda %40 iyileşme. Sponsor firma sonraki gelişimi durdurdu — ticari olarak mevcut değil ama mekanizma kavramsal olarak önemli.',
+    caution: 'Klinik kullanım onayı yok. Baş ağrısı en sık yan etki.',
+    studies: ['STUTTER_PAGO', 'STUTTER_REVIEW']
+  },
+  {
+    id: 'pimozide', name: 'Pimozid', alias: 'Orap · Tipik antipsikotik · D2 + Ca kanal',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic','nigrostriatal','tuberoinfundibular'],
+    effect: 'D2 antagonisti + L-tip Ca²⁺ kanal blokajı. Tourette ve geçmişte kekemelik.',
+    mechanism: 'D2 reseptöründe yüksek afiniteli antagonist; ek olarak L-tip kalsiyum kanal blokajı. Yarı ömür çok uzun (50+ saat) — günde tek doz.',
+    clinical: 'Tourette sendromu için FDA onaylı (refrakter olgu). Kekemelik için geçmişte denendi.',
+    caution: 'Yüksek QT uzatma riski — CYP3A4 inhibitörleriyle (klaritromisin, antifungal vs.) etkileşim ölümcül olabilir. Bloch 1997\'de psikiyatrik açıdan sağlıklı kekemelik hastalarının yarısında depresif semptom gelişti; modern pratikte kekemelik için tercih edilmez.',
+    studies: ['STUTTER_PIMO', 'STUTTER_REVIEW']
+  },
+  {
+    id: 'lurasidone', name: 'Lurazidon', alias: 'Latuda · Atipik · D2 + 5HT2A + 5HT7',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic'],
+    effect: 'D2 + 5HT2A + 5HT7 antagonisti; metabolik yük düşük.',
+    mechanism: 'D2 + 5HT2A klasik atipik profili + 5HT7 antagonizmi (kognitif iyileşme teorisi). Olanzapin/risperidona kıyasla metabolik yan etkiler belirgin düşük.',
+    clinical: 'Şizofreni, bipolar depresyon. Hiperdopaminerjik kekemelikte teorik alternatif olarak Maguire 2020 review\'unda anılır — özellikle metabolik yük çekincesi olan hastalarda.',
+    caution: 'Akatizi belirgin. Emilim yemekle artar (≥350 kcal şart). CYP3A4 substratı.',
+    studies: ['STUTTER_REVIEW']
+  },
+  {
+    id: 'asenapine', name: 'Asenapin', alias: 'Saphris · Sublingual atipik antipsikotik',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic'],
+    effect: 'D2 + 5HT2A/2C multireseptör antagonisti; sublingual yoldan.',
+    mechanism: 'D2, 5-HT2A, 5-HT2C, α1, α2, H1 multireseptör antagonisti. Oral biyoyararlanım %2 (ilk geçiş) — bu yüzden sadece sublingual.',
+    clinical: 'Şizofreni, bipolar mani. Sublingual yol ve uygulama sonrası 10 dk yeme-içme yasağı uyumu zorlaştırır.',
+    caution: 'Oral hipoestezi (anestezi hissi) yaygın. Akatizi, sedasyon.'
+  },
+  {
+    id: 'deutetrabenazine', name: 'Deutetrabenazin', alias: 'Austedo · Tetrabenazinin döterye edilmiş türevi',
+    category: 'transporter',
+    targets: ['transporter-vmat2'],
+    regions: ['nigrostriatal'],
+    effect: 'Tetrabenazinin uzun etkili türevi; günde iki doz, daha az plazma dalgalanması.',
+    mechanism: 'Tetrabenazinde belirli C–H bağları C–D ("ağır hidrojen") bağlarıyla değiştirilmiş; metabolik klirens yavaşlar, yarı ömür uzar, pik-vadi farkı düşer. Aynı VMAT2 reversibl inhibisyon mekanizması.',
+    clinical: 'Huntington koresi ve tardiv diskinezide onaylı. Tetrabenazinden daha düşük depresyon ve sedasyon profili. Maguire 2020\'de hiperdopaminerjik kekemelik için VMAT2 yolağı potansiyel hedef olarak tartışılır.',
+    caution: 'QT uzaması (özellikle CYP2D6 inhibitörleri ile), somnolans, parkinsonizm. Yine de depresyon riski tetrabenazinden düşük.',
+    studies: ['STUTTER_REVIEW']
+  },
+  {
+    id: 'guanfacine', name: 'Guanfacin', alias: 'Intuniv · Selektif α2A-adrenerjik agonist',
+    category: 'modulator',
+    targets: ['node-da'],
+    regions: ['mesocortical'],
+    effect: 'Postsinaptik α2A → PFC \'de DA-bağımlı kognitif devreleri dolaylı güçlendirir.',
+    mechanism: 'Selektif postsinaptik α2A reseptör agonisti. PFC piramidal nöronlarındaki α2A aktivasyonu, HCN kanallarını kapatır → mikrosirkit "network connectivity" artar (Arnsten). Sonuç: çalışma belleği ve dikkat devreleri güçlenir. Striatal/mezolimbik DA artırmaz — bu yüzden stimülanların aksine tik ve kekemelik kötüleştirici değil.',
+    clinical: 'ADHD onaylı (özellikle tik komorbiditesinde stimülan alternatifi). Scahill 2001 RKÇ\'sinde guanfacin tik\'li ADHD\'de %37 iyileşme ve tik şiddetinde %31 düşüş. Hiperdopaminerjik kekemelik fenotipi için teorik olarak uygun adjuvan.',
+    caution: 'Sedasyon, hipotansiyon, bradikardi, sersemlik. Aniden kesilirse rebound hipertansiyon. CYP3A4 substratı.',
+    studies: ['STUTTER_GUAN']
+  },
+  {
+    id: 'clonidine', name: 'Klonidin', alias: 'Catapres · α2 agonist (α2A > α2B > α2C)',
+    category: 'modulator',
+    targets: ['node-da'],
+    regions: ['mesocortical'],
+    effect: 'Sempatolitik + ADHD/tik etkisi; presinaptik LC NE salımını baskılar.',
+    mechanism: 'Lokus coeruleus presinaptik α2 otoreseptör aktivasyonu → NE salımı azalır → genel sempatik tonus düşer. Aynı zamanda PFC postsinaptik α2A etkisi (guanfacin gibi ama daha az selektif). Striatal hiperdopaminerjik durumu doğrudan etkilemez ama tik/kekemelik bağlamında dolaylı stabilizasyon.',
+    clinical: 'Hipertansiyon (klasik), ADHD (özellikle tik komorbiditesi), opioid çekilme yönetimi. TSSG 2002 RKÇ\'sinde ADHD+tik\'te metilfenidat ile kombine kullanımı en etkili rejim olarak çıktı.',
+    caution: 'Sedasyon belirgin (guanfacinden daha fazla, çünkü α2A selektif değil). Hipotansiyon, bradikardi. Ani kesim rebound hipertansiyon (kritik).',
+    studies: ['STUTTER_TIC_MPH']
   }
 ];
 
@@ -1771,6 +1863,59 @@ const STUDIES = {
     note: '259 orta-ağır binge-eating disorder hastasında lisdeksamfetamin 50 ve 70 mg/gün, plaseboya kıyasla BE-günü ve 4-haftalık BE-kessasyonunu anlamlı azalttı.',
     doi: '10.1001/jamapsychiatry.2014.2162',
     pmid: '25587645'
+  },
+  STUTTER_RISP: {
+    cite: 'Maguire GA et al. J Clin Psychopharmacol 2000;20(4):479–82',
+    note: '16 yetişkin gelişimsel kekemelik hastasında çift-kör plasebo-kontrollü 6 haftalık RKÇ. Risperidon 0.5–2 mg/gün, % syllables stuttered ölçütünde plaseboya anlamlı üstün. Kekemelik için ilk modern atipik antipsikotik RKÇ\'si.',
+    doi: '10.1097/00004714-200008000-00013',
+    pmid: '10917410'
+  },
+  STUTTER_OLAN: {
+    cite: 'Maguire GA et al. Ann Clin Psychiatry 2004;16(2):63–7',
+    note: '24 yetişkin gelişimsel kekemelik hastasında 12 hafta çift-kör RKÇ. Olanzapin 2.5–5 mg/gün, üç ölçütte (SSI-3, CGI, SSS) plaseboya anlamlı üstün. Olanzapinin kekemelik için atipik antipsikotik ön çalışması.',
+    doi: '10.1080/10401230490452834',
+    pmid: '15328899'
+  },
+  STUTTER_PAGO: {
+    cite: 'Maguire GA et al. J Clin Psychopharmacol 2010;30(1):48–56',
+    note: '132 yetişkin gelişimsel kekemelik hastasında 8 hafta çift-kör + 1 yıl açık-etiketli faz II RKÇ (EXPRESS). Pagoclone (GABA-A α2/α3 PAM) %19.4 vs %5.1 syllables stuttered düşüşü; 1 yılda %40\'a varan iyileşme. Spesifik kekemelik için geliştirilmiş ilk ajan.',
+    doi: '10.1097/JCP.0b013e3181caebbe',
+    pmid: '20075648'
+  },
+  STUTTER_ECO: {
+    cite: 'Maguire GA et al. Ann Clin Psychiatry 2019;31(3):164–8',
+    note: 'Yetişkin kekemelikte D1 selektif antagonist ekopipam açık-etiketli pilot çalışması. Çoğu hasta iyileşme gösterdi, iyi tolere edildi. D2 antagonistlerinin metabolik/EPS yükü olmadan dopaminerjik modülasyon kavramının ilk klinik kanıtı.',
+    pmid: '31369655'
+  },
+  STUTTER_REVIEW: {
+    cite: 'Maguire GA et al. Front Neurosci 2020;14:158',
+    note: 'Kekemelik farmakolojik tedavisinin nöropsikofarmakolojik temellerini özetleyen kapsamlı derleme. D2 antagonistleri (risperidon, olanzapin, aripiprazol), VMAT2 inhibitörleri ve D1 selektif antagonizm hipotezini ve kanıt tabanını ele alır.',
+    doi: '10.3389/fnins.2020.00158',
+    pmid: '32292321'
+  },
+  STUTTER_HALO: {
+    cite: 'Murray TJ et al. Br J Psychiatry 1977;130:370–3',
+    note: '26 yetişkin kekemelik hastasında çift-kör cross-over haloperidol çalışması. 18 tamamlayandan 11\'i plaseboya anlamlı üstün yanıt verdi; ancak 8 hasta yan etki (akatizi, distoni) nedeniyle bıraktı. Kekemeliğin dopaminerjik temelinin ilk büyük klinik kanıtı.',
+    doi: '10.1192/bjp.130.4.370',
+    pmid: '322782'
+  },
+  STUTTER_PIMO: {
+    cite: 'Bloch M et al. J Clin Psychiatry 1997;58(10):433–6',
+    note: 'Psikiyatrik açıdan sağlıklı 8 erkek kekemelik hastasında 6 hafta çift-kör pimozid. Tedaviye uyumlu 7 hastanın 4\'ünde belirgin depresif semptomlar gelişti — D2 antagonistlerinin sağlıklı bireylerde de mood riski oluşturduğunun erken kanıtı. Pimozid kekemelik için modern pratikte tercih edilmez.',
+    doi: '10.4088/jcp.v58n1004',
+    pmid: '9375593'
+  },
+  STUTTER_GUAN: {
+    cite: 'Scahill L et al. Am J Psychiatry 2001;158(7):1067–74',
+    note: '34 çocukta tik bozukluğu + ADHD ile 8 hafta çift-kör plasebo-kontrollü RKÇ. Guanfacin 1.5–3 mg/gün, ADHD belirtilerinde %37 ve tik şiddetinde %31 iyileşme; sedasyon dışında iyi tolere edildi. Hiperdopaminerjik fenotipte α2A modülasyonunun kanıtı.',
+    doi: '10.1176/appi.ajp.158.7.1067',
+    pmid: '11431228'
+  },
+  STUTTER_TIC_MPH: {
+    cite: 'Tourette Syndrome Study Group. Neurology 2002;58(4):527–36',
+    note: '136 ADHD + kronik tik hastası çocukta 16 hafta çift-kör 2×2 RKÇ (klonidin, metilfenidat, kombinasyon, plasebo). Kombinasyon en etkili. Metilfenidat tikleri kötüleştirmedi — klasik öğretiye karşı önemli bulgu. Klonidin tek başına da etkili.',
+    doi: '10.1212/wnl.58.4.527',
+    pmid: '11865128'
   }
 };
 
@@ -1872,13 +2017,13 @@ function showDetail(id) {
            ${agent.studies.map(sid => {
              const s = STUDIES[sid];
              if (!s) return '';
+             const links = [];
+             if (s.doi) links.push(`<a href="https://doi.org/${s.doi}" target="_blank" rel="noopener">DOI</a>`);
+             links.push(`<a href="https://pubmed.ncbi.nlm.nih.gov/${s.pmid}/" target="_blank" rel="noopener">PMID ${s.pmid}</a>`);
              return `<div class="study">
                <div class="study-cite">${s.cite}</div>
                <div class="study-note">${s.note}</div>
-               <div class="study-links">
-                 <a href="https://doi.org/${s.doi}" target="_blank" rel="noopener">DOI</a>
-                 <a href="https://pubmed.ncbi.nlm.nih.gov/${s.pmid}/" target="_blank" rel="noopener">PMID ${s.pmid}</a>
-               </div>
+               <div class="study-links">${links.join('')}</div>
              </div>`;
            }).join('')}
          </div>
