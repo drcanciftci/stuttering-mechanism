@@ -1,0 +1,1844 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dopaminerjik Sistem Haritası — Mekanizma Komutanı</title>
+<meta name="description" content="Dopamin sentezi, transporterları, reseptörleri ve etki eden 60+ ajanın moleküler hedef haritası. Klinisyenler ve sağlık profesyonelleri için." />
+<meta name="author" content="Uzm. Dr. İsmail Can Çiftçi" />
+<meta property="og:title" content="Dopaminerjik Sistem Haritası" />
+<meta property="og:description" content="60+ ajanın dopamin sistemi üzerindeki moleküler etki haritası." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #0c0e14;
+    --bg-2: #14171f;
+    --bg-3: #1c2029;
+    --bg-card: #161a23;
+    --bg-elev: #1f242e;
+    --ink: #ece7d8;
+    --ink-2: #b8b2a1;
+    --ink-3: #7e7a6e;
+    --line: rgba(236, 231, 216, 0.08);
+    --line-2: rgba(236, 231, 216, 0.16);
+    --line-3: rgba(236, 231, 216, 0.28);
+    --accent: #d4a574;
+    --accent-2: #e8b886;
+    --accent-strong: #f2c896;
+    --hot: #e8593c;
+    --cool: #5dcaa5;
+
+    --cat-substrate: #5dcaa5;
+    --cat-cofactor: #a78bfa;
+    --cat-enzyme: #fb7185;
+    --cat-transporter: #22d3ee;
+    --cat-releaser: #fb923c;
+    --cat-agonist: #60a5fa;
+    --cat-antagonist: #fbbf24;
+    --cat-modulator: #c084fc;
+
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+
+    --font-display: 'Fraunces', 'Times New Roman', serif;
+    --font-body: 'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+
+    --tr: 180ms cubic-bezier(.4,0,.2,1);
+  }
+
+  :root[data-theme="light"] {
+    --bg: #fafaf6;
+    --bg-2: #f1eee5;
+    --bg-3: #e8e3d4;
+    --bg-card: #ffffff;
+    --bg-elev: #faf7ee;
+    --ink: #1c1f1a;
+    --ink-2: #4d4a3f;
+    --ink-3: #807a6a;
+    --line: rgba(28, 31, 26, 0.08);
+    --line-2: rgba(28, 31, 26, 0.18);
+    --line-3: rgba(28, 31, 26, 0.32);
+    --accent: #7a4f1b;
+    --accent-2: #8f5e21;
+    --accent-strong: #5c3a10;
+
+    --cat-substrate: #0f6e56;
+    --cat-cofactor: #534ab7;
+    --cat-enzyme: #993556;
+    --cat-transporter: #0c6e85;
+    --cat-releaser: #993c1d;
+    --cat-agonist: #185fa5;
+    --cat-antagonist: #854f0b;
+    --cat-modulator: #6b21a8;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--font-body);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: hidden;
+  }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; padding: 0;
+    margin: -1px; overflow: hidden; clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+  }
+
+  .wrap {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ============ HEADER ============ */
+  header.hero {
+    padding: 80px 0 64px;
+    border-bottom: 1px solid var(--line);
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212, 165, 116, 0.06), transparent 70%),
+      linear-gradient(180deg, var(--bg-2), var(--bg) 100%);
+    position: relative;
+  }
+  header.hero::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line-2) 30%, var(--line-2) 70%, transparent);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: flex-end;
+  }
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .kicker::before {
+    content: "";
+    display: inline-block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h1.title {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(38px, 6vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin-bottom: 24px;
+    font-variation-settings: "opsz" 144;
+  }
+  h1.title em {
+    font-style: italic;
+    color: var(--accent-strong);
+    font-weight: 300;
+  }
+  .lede {
+    font-size: 17px;
+    color: var(--ink-2);
+    max-width: 640px;
+    line-height: 1.55;
+  }
+  .lede strong {
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-end;
+  }
+  .theme-toggle {
+    background: var(--bg-card);
+    border: 1px solid var(--line-2);
+    color: var(--ink-2);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--tr);
+  }
+  .theme-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+  .theme-toggle svg { width: 18px; height: 18px; }
+  .theme-toggle .sun { display: none; }
+  :root[data-theme="light"] .theme-toggle .moon { display: none; }
+  :root[data-theme="light"] .theme-toggle .sun { display: block; }
+  .stat-strip {
+    display: flex;
+    gap: 32px;
+    margin-top: 56px;
+    padding-top: 32px;
+    border-top: 1px solid var(--line);
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1;
+    font-variation-settings: "opsz" 144;
+  }
+  .stat-lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  /* ============ DIAGRAM SECTION ============ */
+  section.diagram-section {
+    padding: 64px 0 48px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg);
+  }
+  .section-head {
+    margin-bottom: 40px;
+    max-width: 720px;
+  }
+  .section-head .lbl {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+    display: block;
+  }
+  .section-head h2 {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 40px);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+    font-variation-settings: "opsz" 144;
+  }
+  .section-head p {
+    color: var(--ink-2);
+    font-size: 15px;
+  }
+  .diagram-card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .diagram-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 32px; right: 32px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.5;
+  }
+  svg.pathway { width: 100%; height: auto; display: block; }
+
+  svg .node, svg .target {
+    transition: opacity .25s, stroke-width .25s, filter .25s;
+  }
+  svg .target.dim { opacity: 0.18; }
+  svg .target.hl rect { stroke-width: 2.5; filter: drop-shadow(0 0 12px currentColor); }
+  svg .layer-lbl {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    fill: var(--accent);
+  }
+  svg text.t, svg text.th { font-family: var(--font-body); font-size: 14px; font-weight: 500; }
+  svg text.ts { font-family: var(--font-body); font-size: 12px; font-weight: 400; }
+  svg text.cofactor { font-family: var(--font-mono); font-size: 10.5px; letter-spacing: 0.04em; fill: var(--ink-3); }
+
+  svg .box-tyr rect { fill: var(--bg-3); stroke: var(--ink-3); }
+  svg .box-tyr text { fill: var(--ink); }
+
+  svg .box-ldopa rect { fill: rgba(96, 165, 250, 0.12); stroke: var(--cat-agonist); }
+  svg .box-ldopa text { fill: var(--cat-agonist); }
+  svg .box-ldopa text.th { fill: var(--ink); }
+
+  svg .box-da rect { fill: rgba(212, 165, 116, 0.18); stroke: var(--accent); }
+  svg .box-da text.th { fill: var(--accent-strong); }
+  svg .box-da text.ts { fill: var(--accent); }
+
+  svg .box-ne rect, svg .box-epi rect { fill: rgba(96, 165, 250, 0.08); stroke: var(--cat-agonist); }
+  svg .box-ne text, svg .box-epi text { fill: var(--cat-agonist); }
+  svg .box-ne text.th, svg .box-epi text.th { fill: var(--ink); }
+
+  svg .box-enzyme rect { fill: rgba(251, 113, 133, 0.12); stroke: var(--cat-enzyme); }
+  svg .box-enzyme text { fill: var(--cat-enzyme); }
+
+  svg .box-transporter rect { fill: rgba(34, 211, 238, 0.10); stroke: var(--cat-transporter); }
+  svg .box-transporter text.th { fill: var(--ink); }
+  svg .box-transporter text.ts { fill: var(--cat-transporter); }
+
+  svg .box-deg rect { fill: rgba(251, 113, 133, 0.10); stroke: var(--cat-enzyme); }
+  svg .box-deg text.th { fill: var(--ink); }
+  svg .box-deg text.ts { fill: var(--cat-enzyme); }
+
+  svg .box-receptor rect { fill: rgba(192, 132, 252, 0.10); stroke: var(--cat-modulator); }
+  svg .box-receptor text.th { fill: var(--ink); }
+  svg .box-receptor text.ts { fill: var(--cat-modulator); }
+
+  svg .arr-line { stroke: var(--ink-3); stroke-width: 1.4; fill: none; }
+  svg .arr-line-dash { stroke: var(--ink-3); stroke-width: 0.8; fill: none; stroke-dasharray: 3 3; opacity: 0.6; }
+  svg .arrow-head { fill: var(--ink-3); }
+
+  /* ============ PATHWAY PILLS ============ */
+  .pathway-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+  .pp {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 8px 14px;
+    background: var(--bg-2);
+    border-radius: 999px;
+    color: var(--ink-2);
+    border: 1px solid var(--line);
+    transition: var(--tr);
+    letter-spacing: 0.02em;
+  }
+  .pp.hl {
+    background: rgba(212, 165, 116, 0.14);
+    border-color: var(--accent);
+    color: var(--accent-strong);
+  }
+  :root[data-theme="light"] .pp.hl {
+    background: rgba(122, 79, 27, 0.10);
+  }
+
+  /* ============ FILTER BAR ============ */
+  section.filter-section {
+    padding: 32px 0 12px;
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .filter-row {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .search-wrap {
+    flex: 1;
+    min-width: 260px;
+    position: relative;
+  }
+  .search-input {
+    width: 100%;
+    height: 44px;
+    background: var(--bg-card);
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-md);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 0 16px 0 44px;
+    transition: var(--tr);
+  }
+  .search-input:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(212, 165, 116, 0.12);
+  }
+  .search-icon {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--ink-3);
+    pointer-events: none;
+  }
+  .cat-filters {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .cat-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--line-2);
+    color: var(--ink-2);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--tr);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .cat-btn:hover {
+    border-color: var(--line-3);
+    color: var(--ink);
+  }
+  .cat-btn.active {
+    background: var(--ink);
+    border-color: var(--ink);
+    color: var(--bg);
+  }
+  .cat-btn .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-3);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ============ CARD GRID ============ */
+  section.cards-section {
+    padding: 32px 0 80px;
+    background: var(--bg);
+  }
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+    min-width: 0;
+  }
+  .card {
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-md);
+    padding: 18px 18px 16px;
+    cursor: pointer;
+    transition: var(--tr);
+    position: relative;
+    text-align: left;
+    color: inherit;
+    font-family: inherit;
+    overflow: hidden;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--cat);
+    opacity: 0.7;
+    transition: var(--tr);
+  }
+  .card:hover {
+    border-color: var(--line-3);
+    transform: translateY(-2px);
+  }
+  .card:hover::before { opacity: 1; height: 3px; }
+  .card.active {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .card-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--cat);
+    margin-bottom: 10px;
+  }
+  .card-cat .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--cat);
+  }
+  .card-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+    font-variation-settings: "opsz" 24;
+  }
+  .card-effect {
+    font-size: 13px;
+    color: var(--ink-2);
+    line-height: 1.45;
+  }
+  .card-targets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 12px;
+  }
+  .target-tag {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    background: var(--bg-2);
+    padding: 3px 7px;
+    border-radius: 4px;
+    border: 1px solid var(--line);
+  }
+
+  /* ============ DETAIL PANEL ============ */
+  .detail-panel {
+    position: sticky;
+    top: 96px;
+    background: var(--bg-card);
+    border: 1px solid var(--line);
+    border-radius: var(--r-lg);
+    padding: 32px 28px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-2) transparent;
+  }
+  .detail-panel::-webkit-scrollbar { width: 6px; }
+  .detail-panel::-webkit-scrollbar-thumb { background: var(--line-2); border-radius: 3px; }
+  .detail-panel-empty {
+    text-align: center;
+    color: var(--ink-3);
+    padding: 60px 12px;
+  }
+  .detail-panel-empty svg {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 18px;
+    opacity: 0.5;
+  }
+  .detail-panel-empty p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-3);
+  }
+  .detail-cat {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cat);
+    margin-bottom: 14px;
+  }
+  .detail-cat .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--cat);
+  }
+  .detail-name {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    margin-bottom: 8px;
+    font-variation-settings: "opsz" 72;
+  }
+  .detail-alias {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-3);
+    margin-bottom: 24px;
+  }
+  .detail-effect {
+    font-size: 15px;
+    color: var(--ink);
+    padding: 14px 16px;
+    background: var(--bg-2);
+    border-left: 3px solid var(--cat);
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    margin-bottom: 24px;
+    line-height: 1.5;
+  }
+  .detail-block {
+    margin-bottom: 22px;
+  }
+  .detail-block h4 {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .detail-block p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+  .detail-block.caution {
+    border: 1px solid rgba(232, 89, 60, 0.3);
+    background: rgba(232, 89, 60, 0.06);
+    padding: 14px 16px;
+    border-radius: var(--r-sm);
+  }
+  .detail-block.caution h4 { color: var(--hot); }
+  .detail-block.caution p { color: var(--ink); }
+  .detail-targets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .detail-targets .target-tag {
+    font-size: 10px;
+    color: var(--ink-2);
+    background: var(--bg-2);
+    padding: 5px 9px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 48px 0 40px;
+    border-top: 1px solid var(--line);
+    background: var(--bg-2);
+    margin-top: 64px;
+  }
+  .footer-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  .signature {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 400;
+    margin-bottom: 4px;
+    font-variation-settings: "opsz" 24;
+  }
+  .signature-sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ink-3);
+    text-transform: uppercase;
+  }
+  .disclaimer {
+    font-size: 12px;
+    color: var(--ink-3);
+    max-width: 320px;
+    line-height: 1.55;
+    text-align: right;
+  }
+
+  /* ============ EMPTY STATE ============ */
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--ink-3);
+    font-size: 14px;
+  }
+  .no-results .big {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: var(--ink-2);
+    margin-bottom: 6px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 1100px) {
+    .layout {
+      grid-template-columns: 1fr;
+    }
+    .detail-panel {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      top: auto;
+      border-radius: var(--r-lg) var(--r-lg) 0 0;
+      transform: translateY(100%);
+      transition: transform .35s cubic-bezier(.4,0,.2,1);
+      max-height: 78vh;
+      z-index: 100;
+      border-bottom: none;
+      box-shadow: 0 -8px 32px rgba(0,0,0,0.32);
+    }
+    .detail-panel.open { transform: translateY(0); }
+    .detail-panel .close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--bg-2);
+      border: 1px solid var(--line-2);
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      color: var(--ink-2);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+  @media (min-width: 1101px) {
+    .close-btn { display: none; }
+  }
+  @media (max-width: 720px) {
+    header.hero { padding: 56px 0 44px; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-actions { align-items: flex-start; }
+    .stat-strip { gap: 22px; flex-wrap: wrap; }
+    section.diagram-section { padding: 44px 0 32px; }
+    .diagram-card { padding: 20px 12px; }
+    .footer-inner { grid-template-columns: 1fr; }
+    .disclaimer { text-align: left; max-width: 100%; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <span class="kicker">Mekanizma Komutanı · Klinik Pratiği Destekleyen Görsel Araç</span>
+        <h1 class="title">Dopaminerjik <em>sistem haritası</em></h1>
+        <p class="lede">
+          Tirozinden epinefrine uzanan sentez yolağı, sinaptik aktörler ve <strong>60+ ajanın</strong> moleküler hedefleri tek bir haritada.
+          Substrat, kofaktör, enzim inhibitörü, transporter modülatörü, reseptör agonisti/antagonisti ve indirekt etkili modülatörler — etki noktaları görsel olarak vurgulanır.
+        </p>
+      </div>
+      <div class="hero-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir" title="Tema değiştir">
+          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="stat-strip">
+      <div class="stat"><span class="stat-num" id="stat-total">66</span><span class="stat-lbl">Moleküler ajan</span></div>
+      <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">Enzim &amp; transporter</span></div>
+      <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Dopaminerjik yolak</span></div>
+      <div class="stat"><span class="stat-num">8</span><span class="stat-lbl">Etki kategorisi</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="diagram-section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="lbl">01 · Sentez yolağı &amp; sinaptik aktörler</span>
+      <h2>Tirozinden HVA'ya — bir nörotransmitterin yaşam döngüsü</h2>
+      <p>Üst sıra sentez zincirini gösterir; alt sıra sinaptik aktörleri (depo, geri alım, yıkım, reseptör) içerir. Bir ajana tıkladığında hedefler vurgulanır, etkilenen beyin yolakları aşağıda işaretlenir.</p>
+    </div>
+
+    <div class="diagram-card">
+      <svg class="pathway" viewBox="0 0 760 260" role="img" aria-labelledby="diagTitle diagDesc">
+        <title id="diagTitle">Dopaminerjik yolak şeması</title>
+        <desc id="diagDesc">Tirozinden epinefrine sentez zinciri ve sinaptik aktörler.</desc>
+
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M2 1L8 5L2 9" class="arrow-head"/>
+          </marker>
+        </defs>
+
+        <text class="layer-lbl" x="20" y="20">Sentez yolağı</text>
+
+        <g id="node-tyr" class="target box-tyr">
+          <rect x="20" y="42" width="76" height="44" rx="6" stroke-width="1"/>
+          <text class="th" x="58" y="64" text-anchor="middle" dominant-baseline="central">Tyr</text>
+        </g>
+        <line x1="98" y1="64" x2="138" y2="64" class="arr-line" marker-end="url(#ah)"/>
+        <g id="enzyme-th" class="target box-enzyme">
+          <rect x="104" y="34" width="32" height="20" rx="4" stroke-width="1"/>
+          <text class="ts" x="120" y="48" text-anchor="middle" dominant-baseline="central">TH</text>
+        </g>
+
+        <g id="node-ldopa" class="target box-ldopa">
+          <rect x="140" y="42" width="84" height="44" rx="6" stroke-width="1"/>
+          <text class="th" x="182" y="64" text-anchor="middle" dominant-baseline="central">L-DOPA</text>
+        </g>
+        <line x1="226" y1="64" x2="266" y2="64" class="arr-line" marker-end="url(#ah)"/>
+        <g id="enzyme-aadc" class="target box-enzyme">
+          <rect x="230" y="34" width="38" height="20" rx="4" stroke-width="1"/>
+          <text class="ts" x="249" y="48" text-anchor="middle" dominant-baseline="central">AADC</text>
+        </g>
+
+        <g id="node-da" class="target box-da">
+          <rect x="268" y="42" width="92" height="44" rx="6" stroke-width="1.5"/>
+          <text class="th" x="314" y="60" text-anchor="middle" dominant-baseline="central">Dopamin</text>
+          <text class="ts" x="314" y="76" text-anchor="middle" dominant-baseline="central">merkez molekül</text>
+        </g>
+        <line x1="362" y1="64" x2="402" y2="64" class="arr-line" marker-end="url(#ah)"/>
+        <g id="enzyme-dbh" class="target box-enzyme">
+          <rect x="368" y="34" width="32" height="20" rx="4" stroke-width="1"/>
+          <text class="ts" x="384" y="48" text-anchor="middle" dominant-baseline="central">DBH</text>
+        </g>
+
+        <g id="node-ne" class="target box-ne">
+          <rect x="404" y="42" width="72" height="44" rx="6" stroke-width="1"/>
+          <text class="th" x="440" y="64" text-anchor="middle" dominant-baseline="central">NE</text>
+        </g>
+        <line x1="478" y1="64" x2="518" y2="64" class="arr-line" marker-end="url(#ah)"/>
+        <g id="enzyme-pnmt" class="target box-enzyme">
+          <rect x="482" y="34" width="34" height="20" rx="4" stroke-width="1"/>
+          <text class="ts" x="499" y="48" text-anchor="middle" dominant-baseline="central">PNMT</text>
+        </g>
+
+        <g id="node-epi" class="target box-epi">
+          <rect x="520" y="42" width="72" height="44" rx="6" stroke-width="1"/>
+          <text class="th" x="556" y="64" text-anchor="middle" dominant-baseline="central">Epi</text>
+        </g>
+
+        <text class="cofactor" x="120" y="104" text-anchor="middle">BH4 · Fe · O₂</text>
+        <text class="cofactor" x="249" y="104" text-anchor="middle">PLP (B6)</text>
+        <text class="cofactor" x="384" y="104" text-anchor="middle">Cu · vit C · O₂</text>
+        <text class="cofactor" x="499" y="104" text-anchor="middle">SAM-e</text>
+
+        <line x1="314" y1="88" x2="314" y2="140" class="arr-line-dash"/>
+
+        <text class="layer-lbl" x="20" y="140">Sinaptik aktörler</text>
+
+        <g id="transporter-vmat2" class="target box-transporter">
+          <rect x="20" y="160" width="108" height="60" rx="6" stroke-width="1"/>
+          <text class="th" x="74" y="184" text-anchor="middle" dominant-baseline="central">VMAT2</text>
+          <text class="ts" x="74" y="204" text-anchor="middle" dominant-baseline="central">vezikül depo</text>
+        </g>
+
+        <g id="transporter-dat" class="target box-transporter">
+          <rect x="138" y="160" width="108" height="60" rx="6" stroke-width="1"/>
+          <text class="th" x="192" y="184" text-anchor="middle" dominant-baseline="central">DAT</text>
+          <text class="ts" x="192" y="204" text-anchor="middle" dominant-baseline="central">geri alım</text>
+        </g>
+
+        <g id="enzyme-mao" class="target box-deg">
+          <rect x="256" y="160" width="108" height="60" rx="6" stroke-width="1"/>
+          <text class="th" x="310" y="184" text-anchor="middle" dominant-baseline="central">MAO-A/B</text>
+          <text class="ts" x="310" y="204" text-anchor="middle" dominant-baseline="central">→ DOPAC</text>
+        </g>
+
+        <g id="enzyme-comt" class="target box-deg">
+          <rect x="374" y="160" width="108" height="60" rx="6" stroke-width="1"/>
+          <text class="th" x="428" y="184" text-anchor="middle" dominant-baseline="central">COMT</text>
+          <text class="ts" x="428" y="204" text-anchor="middle" dominant-baseline="central">→ 3-MT, HVA</text>
+        </g>
+
+        <g id="receptor-d1" class="target box-receptor">
+          <rect x="492" y="160" width="120" height="60" rx="6" stroke-width="1"/>
+          <text class="th" x="552" y="184" text-anchor="middle" dominant-baseline="central">D1 ailesi</text>
+          <text class="ts" x="552" y="204" text-anchor="middle" dominant-baseline="central">Gs · uyarıcı</text>
+        </g>
+
+        <g id="receptor-d2" class="target box-receptor">
+          <rect x="622" y="160" width="120" height="60" rx="6" stroke-width="1"/>
+          <text class="th" x="682" y="184" text-anchor="middle" dominant-baseline="central">D2 ailesi</text>
+          <text class="ts" x="682" y="204" text-anchor="middle" dominant-baseline="central">Gi · inhibe</text>
+        </g>
+
+        <text class="cofactor" x="428" y="240" text-anchor="middle">COMT kofaktör: SAM-e, Mg | MAO kofaktör: FAD</text>
+      </svg>
+
+      <div class="pathway-pills" id="pathway-pills">
+        <span class="pp" data-id="nigrostriatal">Nigrostriatal — SN → striatum · motor</span>
+        <span class="pp" data-id="mesolimbic">Mezolimbik — VTA → NAc · ödül</span>
+        <span class="pp" data-id="mesocortical">Mezokortikal — VTA → PFC · biliş</span>
+        <span class="pp" data-id="tuberoinfundibular">Tuberoinfundibular — prolaktin baskılayıcı</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="filter-section" id="filterSection">
+  <div class="wrap">
+    <div class="filter-row">
+      <div class="search-wrap">
+        <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <input id="searchInput" class="search-input" type="text" placeholder="Ajan ara (örn. metilfenidat, MAO, D2)…" />
+      </div>
+      <div class="cat-filters" id="catFilters">
+        <button class="cat-btn active" data-cat="all">Tümü</button>
+      </div>
+    </div>
+    <div class="meta" style="margin-top: 10px;" id="resultMeta">— ajan gösteriliyor</div>
+  </div>
+</section>
+
+<section class="cards-section">
+  <div class="wrap">
+    <div class="layout">
+      <div class="cards-grid" id="cardsGrid"></div>
+
+      <aside class="detail-panel" id="detailPanel">
+        <button class="close-btn" id="closeBtn" aria-label="Kapat">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="detail-panel-empty" id="detailEmpty">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+          <p>Bir ajana tıkla.<br/>Şemada hedef enzim, reseptör veya transporter vurgulanır; mekanizma, klinik kullanım ve uyarı notları burada görünür.</p>
+        </div>
+        <div id="detailContent" style="display:none;"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <div>
+        <div class="signature">Mekanizma kazansın.</div>
+        <div class="signature-sub">Uzm. Dr. İsmail Can Çiftçi · İç Hastalıkları</div>
+      </div>
+      <div class="disclaimer">
+        Bilimsel referans amaçlı eğitim materyalidir. Klinik karar için kanıt düzeyi, hasta bireyselliği ve güncel kılavuzlar göz önünde bulundurulmalıdır. Tıbbi tavsiye değildir.
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const CATEGORIES = {
+  substrate:   { label: 'Substrat',          short: 'Sub'  },
+  cofactor:    { label: 'Kofaktör',          short: 'Cof'  },
+  enzyme:      { label: 'Enzim inhibitörü',  short: 'Enz'  },
+  transporter: { label: 'Transporter',       short: 'Tran' },
+  releaser:    { label: 'Salıveren',         short: 'Rel'  },
+  agonist:     { label: 'Reseptör agonisti', short: 'Ago'  },
+  antagonist:  { label: 'Reseptör antag.',   short: 'Ant'  },
+  modulator:   { label: 'Modülatör',         short: 'Mod'  }
+};
+
+const TARGET_LABELS = {
+  'node-tyr': 'Tyr',
+  'enzyme-th': 'TH',
+  'node-ldopa': 'L-DOPA',
+  'enzyme-aadc': 'AADC',
+  'node-da': 'Dopamin',
+  'enzyme-dbh': 'DBH',
+  'node-ne': 'NE',
+  'enzyme-pnmt': 'PNMT',
+  'node-epi': 'Epi',
+  'transporter-vmat2': 'VMAT2',
+  'transporter-dat': 'DAT',
+  'enzyme-mao': 'MAO',
+  'enzyme-comt': 'COMT',
+  'receptor-d1': 'D1',
+  'receptor-d2': 'D2'
+};
+
+const ALL_TARGETS = Object.keys(TARGET_LABELS);
+
+const AGENTS = [
+  {
+    id: 'lphe', name: 'L-Fenilalanin', alias: 'Phe · Essansiyel amino asit',
+    category: 'substrate',
+    targets: ['node-tyr','enzyme-th'],
+    regions: ['mesocortical','mesolimbic','nigrostriatal'],
+    effect: 'PAH üzerinden tirozine dönüşüp sentez havuzunu besler.',
+    mechanism: 'Fenilalanin hidroksilaz (PAH, kofaktör BH4) ile tirozine çevrilir, oradan TH üzerinden L-DOPA yolağına girer. Sentez havuzunu en yukarıdan besleyen kaynak.',
+    clinical: 'Akıl bulanıklığı, motivasyon düşüklüğü tabanlı yaklaşımlarda alternatif öncül. Tipik doz 500–1500 mg/gün.',
+    caution: 'Fenilketonüride kesin kontrendike. Hiperdopaminerjik fenotipte (Tourette, kekemelik) anksiyete ve semptom artışı.'
+  },
+  {
+    id: 'ltyr', name: 'L-Tirozin', alias: 'Tyr · TH substratı',
+    category: 'substrate',
+    targets: ['node-tyr','enzyme-th'],
+    regions: ['mesocortical','mesolimbic','nigrostriatal'],
+    effect: 'TH hız-kısıtlayıcı adımını doyurur, akut stres tepkisinde DA üretimini artırır.',
+    mechanism: 'Tirozin hidroksilaz (TH) hız-kısıtlayıcı enzimdir; substrat bolluğu özellikle akut stres / yüksek dönüşüm durumlarında belirgin DA artışı sağlar. Tirozin TH için Km düzeyinde kalıcı substrat olur.',
+    clinical: 'Akut stres tepkisinde kognitif performans çalışmaları (askeri, soğuk stres) destekleyici. Tipik doz 500–2000 mg/gün, sabah aç karna.',
+    caution: 'Hiperdopaminerjik fenotipte (Tourette, kekemelik, manik faz) belirgin kötüleştirici. MAOİ ile birlikte hipertansif kriz riski.'
+  },
+  {
+    id: 'nalt', name: 'N-Asetil L-Tirozin', alias: 'NALT · Biyoyararlılığı tartışmalı tirozin formu',
+    category: 'substrate',
+    targets: ['node-tyr','enzyme-th'],
+    regions: ['mesocortical','mesolimbic'],
+    effect: 'Tirozin asetil formu; pratikte L-tirozinden daha az etkili kabul edilir.',
+    mechanism: 'Tirozinin asetile prekürsörü; serum yarı ömrü uzun olsa da deasetilasyon hızı düşük olduğundan tirozin AUC\'si genelde L-tirozinden daha düşüktür. Pazarlamanın aksine üstünlüğü kanıtlanmadı.',
+    clinical: 'L-Tirozin tolere edilemediğinde alternatif, ama klinik etki sınırlı.',
+    caution: 'L-tirozin yan etkileri için aynı uyarılar.'
+  },
+  {
+    id: 'ldopa', name: 'L-DOPA', alias: 'Levodopa · Sinemet, Madopar',
+    category: 'substrate',
+    targets: ['node-ldopa','enzyme-aadc'],
+    regions: ['nigrostriatal'],
+    effect: 'TH adımını atlar; AADC tarafından doğrudan DA\'ya çevrilir.',
+    mechanism: 'Kan-beyin bariyerini büyük amino asit taşıyıcısıyla geçer. Tirozin hidroksilaz hız-kısıtlayıcı adımını bypass eder. Periferik karbidopa/benserazid kombinasyonu periferal AADC inhibe ederek beyin biyoyararlılığını artırır.',
+    clinical: 'Parkinson hastalığı tedavisinin temel taşı. DOPA-responsive distoniler. Akut kullanımda dramatik motor iyileşme.',
+    caution: 'On-off dalgalanmaları, diskinezi, dürtü kontrol bozukluğu, ortostatik hipotansiyon, halüsinasyon. Karbidopa olmadan periferik bulantı belirgin.'
+  },
+  {
+    id: 'mucuna', name: 'Mucuna pruriens', alias: 'Velvet bean · Doğal L-DOPA kaynağı',
+    category: 'substrate',
+    targets: ['node-ldopa','enzyme-aadc'],
+    regions: ['nigrostriatal'],
+    effect: 'Doğal L-DOPA içerir (%4–7); AADC tarafından DA\'ya çevrilir.',
+    mechanism: 'Tohumları doğal L-DOPA içerir. Ayrıca BH4, NADH ve bazı 5-HT modülatörleri ile birlikte gelir. Bazı küçük çalışmalarda sentetik L-DOPA\'ya benzer farmakokinetik gösterir.',
+    clinical: 'Ayurveda kökenli; bazı Parkinson hastaları ek/alternatif olarak kullanır. Pratikte standardizasyon zayıf.',
+    caution: 'Karbidopasız olduğu için periferik yan etki belirgin. Sentetik L-DOPA ile birlikte kullanım dozaj karmaşası yaratır. Doping testlerinde DOPA pozitifliği yapar.'
+  },
+  {
+    id: 'b6', name: 'Vitamin B6 (PLP)', alias: 'Piridoksal-5-fosfat · AADC kofaktörü',
+    category: 'cofactor',
+    targets: ['enzyme-aadc'],
+    regions: [],
+    effect: 'AADC enziminin zorunlu kofaktörü; eksiklik DA sentezini sınırlar.',
+    mechanism: 'Piridoksal-5-fosfat, aromatik L-amino asit dekarboksilaz (AADC) için zorunlu kofaktördür. PLP eksikliğinde L-DOPA\'dan DA, 5-HTP\'den 5-HT üretimi azalır. Yüksek doz B6 + tirozin/L-DOPA kombinasyonu DA sentezini belirgin artırır.',
+    clinical: 'Vit B6 eksikliği klinik olarak DA düşüklüğü, nöbet eşiği düşmesi, hiperprolaktinemi yapar. Levodopa tedavisinde periferik karbidopa olmadan B6 periferik AADC\'yi uyararak beyin biyoyararlılığını azaltır.',
+    caution: 'Uzun süreli yüksek doz (>100 mg/gün, kronik) periferik nöropati. Hiperdopaminerjik fenotipte yüksek doz dikkatli.'
+  },
+  {
+    id: 'vitc', name: 'Vitamin C', alias: 'Askorbik asit · DBH kofaktörü',
+    category: 'cofactor',
+    targets: ['enzyme-dbh'],
+    regions: [],
+    effect: 'DBH için zorunlu redoks kofaktörü; eksiklik NE/Epi üretimini azaltır.',
+    mechanism: 'Dopamin β-hidroksilaz (DBH) reaksiyonunda Cu²⁺\'yi yeniden indirgemek için askorbat gerekir. Aynı zamanda DA ve diğer katekolaminler için genel antioksidan koruma sağlar (oksidasyon ürünleri nörotoksik).',
+    clinical: 'Skorbüt klasik olarak halsizlik, depresif semptomlarla ilişkilidir — kısmen DBH disfonksiyonuna bağlanır.',
+    caution: 'Yüksek doz uzun süreli oksalat taşı riski.'
+  },
+  {
+    id: 'cu', name: 'Bakır', alias: 'Cu²⁺ · DBH metal kofaktörü',
+    category: 'cofactor',
+    targets: ['enzyme-dbh'],
+    regions: [],
+    effect: 'DBH aktif merkezinde bulunan zorunlu metal.',
+    mechanism: 'Dopamin β-hidroksilaz aktif bölgesinde 2 Cu atomu bulunur; bakır eksikliğinde DA → NE dönüşümü düşer ve sinaptik NE/Epi azalır.',
+    clinical: 'Menkes hastalığı, kronik çinko aşırı kullanımı, malabsorpsiyon bakır eksikliği yapar; nörolojik tablo, hipotermi, halsizlik.',
+    caution: 'Wilson hastalığında aksine bakır birikimi; nörolojik tabloya yol açar. Aşırı bakır da DA otoksidasyonunu artırır.'
+  },
+  {
+    id: 'fe', name: 'Demir', alias: 'Fe²⁺ · TH kofaktörü',
+    category: 'cofactor',
+    targets: ['enzyme-th'],
+    regions: ['nigrostriatal','mesolimbic'],
+    effect: 'TH aktif merkez metali; eksiklik striatal D2 reseptör artışı ve dopaminerjik labilite yapar.',
+    mechanism: 'Tirozin hidroksilaz aktif bölgesinde Fe²⁺ bulunur. Ferritin düşüklüğünde TH aktivitesi azalır; aynı zamanda D2 reseptör ekspresyonu artar — bu Tourette, RLS, ADHD ve kekemelikte gözlemlenen demir-DA bağlantısının temeli.',
+    clinical: 'RLS, çocuklarda Tourette ve ADHD\'de ferritin <50 ng/mL bulunuyorsa replasman kanıt destekli. Çocuk psikiyatrisinde rutin tarama önerilir.',
+    caution: 'Hemokromatozda dikkat; demir yüklenmesi DA oksidasyonu ve nörotoksisite artırır.'
+  },
+  {
+    id: 'bh4', name: 'BH4 / Sapropterin', alias: 'Tetrahidrobiopterin · TH ve PAH kofaktörü',
+    category: 'cofactor',
+    targets: ['enzyme-th','node-tyr'],
+    regions: [],
+    effect: 'TH ve PAH enzimlerinin pteridin kofaktörü; düşüklüğünde sentez ciddi azalır.',
+    mechanism: 'Tirozin hidroksilaz ve fenilalanin hidroksilaz için zorunlu pteridin kofaktörü. BH4 eksikliği (GTPCH-1, PTPS, DHPR mutasyonları) atipik PKU ve dopamin-responsive distoniler ile prezente olur. Folat-B12 metilasyon döngüsü BH4 sentezi/rejenerasyonunu destekler.',
+    clinical: 'Sapropterin dihidroklorid (Kuvan) PKU\'nun BH4-responsive formlarında onaylı. Bazı DA-responsive distoni olgularında etkili.',
+    caution: 'Yüksek maliyetli, dar endikasyonlu. Periferal NO sentezini de etkiler.'
+  },
+  {
+    id: 'same', name: 'SAM-e', alias: 'S-Adenozil-L-metiyonin · COMT ve PNMT metil donörü',
+    category: 'cofactor',
+    targets: ['enzyme-comt','enzyme-pnmt'],
+    regions: [],
+    effect: 'COMT ve PNMT metilasyon reaksiyonlarının universal metil donörü.',
+    mechanism: 'Universal metil donörü; COMT katekolaminleri metilleyerek inaktive eder, PNMT NE\'yi epinefrine çevirir. SAM-e takviyesi metilasyonu artırır → katekolamin yıkımı hızlanır. Aynı zamanda homosistein-folat-B12 ekseni ile etkileşir.',
+    clinical: 'Depresyon ve osteoartritte kanıt destekli; özellikle COMT yavaş metilleyici (Met/Met) bireylerde etkili olabilir.',
+    caution: 'Bipolar bozuklukta manik kayma riski. MAOİ kullanımında dikkat. Anksiyete artırabilir.'
+  },
+  {
+    id: 'mg', name: 'Magnezyum', alias: 'Mg²⁺ · COMT kofaktör + NMDA modülatörü',
+    category: 'cofactor',
+    targets: ['enzyme-comt'],
+    regions: [],
+    effect: 'COMT için zorunlu metal kofaktör; NMDA voltaj-bağımlı blok yapar (dopaminerjik nötr modülasyon).',
+    mechanism: 'COMT aktif merkezinde Mg²⁺ bulunur — yetersizliğinde DA metilasyonu azalır. Aynı zamanda NMDA reseptörünün voltaj-bağımlı blokeri olarak glutamaterjik tonusu modüle eder; sempatik aşırı uyarılmada yatıştırıcı etki.',
+    clinical: 'Magnezyum bisglisinat 200–400 mg/gün hiperdopaminerjik fenotipte (Tourette, kekemelik, anksiyete) güvenli destek. NMDA modülasyonu üzerinden uyku ve gevşeme.',
+    caution: 'Böbrek yetmezliğinde dikkat. Oksit/sitrat formları osmotik diyare yapar.'
+  },
+  {
+    id: 'zn', name: 'Çinko', alias: 'Zn²⁺ · D2 allosterik modülasyon',
+    category: 'cofactor',
+    targets: ['receptor-d2'],
+    regions: ['nigrostriatal','mesolimbic'],
+    effect: 'D2 reseptörü allosterik modülatörü; eksiklik dopaminerjik labilite ve impulsivite ile ilişkili.',
+    mechanism: 'Çinko D2 reseptörünün negatif allosterik modülatörüdür; aynı zamanda glutamaterjik NMDA modülasyonu yapar. Çinko eksikliğinde dopaminerjik tonus ince dengesi bozulur, immün ve nörogelişimsel etkiler belirgin.',
+    clinical: 'Çocuk pikky-eater, ADHD, behavioral disregulation olgularında çinko replasmanı destekleyici. 5–10 mg çinko bisglisinat.',
+    caution: 'Uzun süreli yüksek doz (>40 mg/gün) bakır eksikliği yapar.'
+  },
+
+  {
+    id: 'amfpt', name: 'Metirosin (α-MPT)', alias: 'Demser · α-metil-para-tirozin',
+    category: 'enzyme',
+    targets: ['enzyme-th'],
+    regions: ['nigrostriatal','mesolimbic','mesocortical'],
+    effect: 'TH enziminin yarışmacı inhibitörü; katekolamin sentezini blokle.',
+    mechanism: 'Tirozin hidroksilaz enzimini yarışmacı şekilde inhibe eder, böylece tüm katekolamin (DA, NE, Epi) sentezini düşürür.',
+    clinical: 'Feokromasitoma operasyonu öncesi periferik katekolamin yükünü düşürmek için tek onaylı kullanım. Çok dar endikasyonlu.',
+    caution: 'Sedasyon, ekstrapiramidal semptomlar, kristalüri.'
+  },
+  {
+    id: 'carbi', name: 'Karbidopa', alias: 'Sinemet komponenti · Periferik AADC inhibitörü',
+    category: 'enzyme',
+    targets: ['enzyme-aadc'],
+    regions: [],
+    effect: 'Periferik AADC\'yi bloke ederek L-DOPA\'nın beyne geçişini artırır.',
+    mechanism: 'Kan-beyin bariyerini geçmediği için periferik AADC\'yi seçici inhibe eder. L-DOPA\'nın periferal DA\'ya dönüşümü azalır → bulantı/hipotansiyon azalır + beyne ulaşan L-DOPA artar (3–4 kat).',
+    clinical: 'Parkinson tedavisinde levodopa ile sabit kombinasyon. Genel klinik standart.',
+    caution: 'B6\'nın periferik etkisini öteler; ancak nadiren santral DA sentezini de etkileyebilir (özellikle yüksek dozda).'
+  },
+  {
+    id: 'bens', name: 'Benserazid', alias: 'Madopar komponenti · Periferik AADC inhibitörü',
+    category: 'enzyme',
+    targets: ['enzyme-aadc'],
+    regions: [],
+    effect: 'Karbidopa\'nın Avrupa\'daki muadili.',
+    mechanism: 'Karbidopa ile aynı mekanizma; periferik AADC blokajı. Levodopa ile sabit kombinasyon (Madopar).',
+    clinical: 'Parkinson tedavisinde Avrupa\'da yaygın.',
+    caution: 'Karbidopa ile benzer profil.'
+  },
+  {
+    id: 'sele', name: 'Selegilin', alias: 'L-deprenil · MAO-B selektif (düşük dozda)',
+    category: 'enzyme',
+    targets: ['enzyme-mao'],
+    regions: ['nigrostriatal','mesolimbic'],
+    effect: 'MAO-B inhibisyonu ile sinaptik DA yarı ömrünü uzatır.',
+    mechanism: 'Düşük dozda (<10 mg/gün) MAO-B selektif; striatumda DA yıkımını yavaşlatır. Yüksek dozda MAO-A inhibisyonu da gelişir. Amfetamin metabolitleri üretir.',
+    clinical: 'Parkinson erken evrede monoterapi; ileri evrede levodopa adjuvanı. Atipik depresyon (transdermal form, EMSAM).',
+    caution: 'Yüksek dozda diyetsel tiramin etkileşimi (hipertansif kriz). SSRI ile serotonin sendromu riski.'
+  },
+  {
+    id: 'rasa', name: 'Rasajilin', alias: 'Azilect · MAO-B selektif, ireversibl',
+    category: 'enzyme',
+    targets: ['enzyme-mao'],
+    regions: ['nigrostriatal'],
+    effect: 'Selektif MAO-B inhibisyonu; amfetamin metaboliti yapmaz.',
+    mechanism: 'Selegiline benzer MAO-B selektif ireversibl inhibitör. Aksine amfetamin türevi metabolit oluşturmaz. Nöroprotektif etki tartışmalı (ADAGIO çalışması karışık sonuç).',
+    clinical: 'Parkinson erken/orta evre. 1 mg/gün.',
+    caution: 'SSRI ile dikkatli kombinasyon. Tiramin etkileşimi tedavi dozunda klinik olarak nadir.'
+  },
+  {
+    id: 'safi', name: 'Safinamid', alias: 'Xadago · MAO-B + glutamat modülasyonu',
+    category: 'enzyme',
+    targets: ['enzyme-mao'],
+    regions: ['nigrostriatal'],
+    effect: 'Reversibl MAO-B inhibisyonu + Na kanal ile glutamat salımı azaltma.',
+    mechanism: 'MAO-B selektif reversibl inhibisyon ile birlikte voltaj-bağımlı Na+ kanal modülasyonu üzerinden glutamat salımını azaltır — diskinezileri azaltabilir.',
+    clinical: 'Levodopa adjuvanı, motor dalgalanmaları düzeltmek için.',
+    caution: 'Görme bozuklukları (retinopati riski olan hastalarda dikkat).'
+  },
+  {
+    id: 'moclo', name: 'Moklobemid', alias: 'Aurorix · MAO-A reversibl',
+    category: 'enzyme',
+    targets: ['enzyme-mao'],
+    regions: ['mesolimbic','mesocortical'],
+    effect: 'Reversibl ve selektif MAO-A inhibisyonu (RIMA).',
+    mechanism: 'MAO-A reversibl inhibisyonu; 5-HT, NE ve DA yarı ömrünü uzatır. Tiramin tarafından kolayca yerinden çıkarıldığı için diyetsel kısıtlama gevşek.',
+    clinical: 'Depresyon, sosyal anksiyete. SSRI çağı öncesi yaygın.',
+    caution: 'SSRI/SNRI ile serotonin sendromu. Petidin/tramadol etkileşimi.'
+  },
+  {
+    id: 'phen', name: 'Fenelzin', alias: 'Nardil · Non-selektif MAO ireversibl',
+    category: 'enzyme',
+    targets: ['enzyme-mao'],
+    regions: ['mesolimbic','mesocortical','nigrostriatal'],
+    effect: 'Hem MAO-A hem MAO-B\'yi ireversibl inhibe eder.',
+    mechanism: 'Hidrazin türevi, non-selektif ireversibl MAO inhibisyonu. Enzim yeniden sentezlenene kadar (2–3 hafta) etki sürer.',
+    clinical: 'Refrakter atipik depresyon, panik bozukluk. Tedavi seçenekleri tükenmiş hastalarda.',
+    caution: 'Klasik MAOİ diyeti: yaşlandırılmış peynir, fermente yiyecek, soya, fermente alkol — hipertansif kriz. SSRI ile birlikte serotonin sendromu (mortal).'
+  },
+  {
+    id: 'tran', name: 'Tranilsipromin', alias: 'Parnate · Non-selektif MAO ireversibl',
+    category: 'enzyme',
+    targets: ['enzyme-mao'],
+    regions: ['mesolimbic','mesocortical','nigrostriatal'],
+    effect: 'Non-selektif MAO blokajı + zayıf amfetamin benzeri etki.',
+    mechanism: 'Amfetamin yapı benzeri; ireversibl non-selektif MAO inhibisyonu yanı sıra hafif DA salıveren etki. Daha uyandırıcı profil.',
+    clinical: 'Refrakter depresyon. Hızlı etki ihtiyacı olan vakalarda.',
+    caution: 'Fenelzin ile aynı diyet ve ilaç etkileşimleri; ek olarak amfetamin benzeri psikomotor uyarım.'
+  },
+  {
+    id: 'rhod', name: 'Rhodiola rosea', alias: 'Salidrosit + rosavin · Bitkisel MAO inhibitörü',
+    category: 'enzyme',
+    targets: ['enzyme-mao'],
+    regions: ['mesolimbic','mesocortical'],
+    effect: 'Zayıf MAO-A (ve daha az MAO-B) inhibisyonu.',
+    mechanism: 'Rosavinler ve salidrosit in vitro MAO-A inhibisyonu gösterir. Aynı zamanda HPA aksı modülasyonu ve antioksidan etki — adaptojen olarak sınıflandırılır.',
+    clinical: 'Hafif-orta yorgunluk, kognitif yorgunluk, hafif depresif semptomlarda kullanılır. RCT verisi sınırlı ama olumlu.',
+    caution: 'Hiperdopaminerjik fenotipte (Tourette, kekemelik) kötüleştirici. SSRI/MAOİ ile dikkatli.'
+  },
+  {
+    id: 'sjw', name: 'St John\'s Wort', alias: 'Hypericum perforatum · Hipericin + hyperforin',
+    category: 'enzyme',
+    targets: ['enzyme-mao'],
+    regions: ['mesolimbic','mesocortical'],
+    effect: 'Zayıf MAO inhibisyonu + SERT/NET/DAT modülasyonu.',
+    mechanism: 'Hyperforin TRPC6 kanalı üzerinden monoamine reuptake inhibisyonu yapar (SERT > NET > DAT). Eski hipotez olan MAO inhibisyonu zayıftır. CYP3A4 ve P-gp güçlü indükleyicisidir.',
+    clinical: 'Hafif-orta depresyon (Almanya\'da yaygın). Meta-analizlerde plaseboya üstün.',
+    caution: 'CYP3A4 indüksiyonu — kontraseptif, antikoagülan, immünosüpresan, antiretroviral düzeylerini düşürür. Klinik açıdan çok riskli ilaç etkileşimleri.'
+  },
+  {
+    id: 'enta', name: 'Entakapon', alias: 'Comtan · Periferik COMT inhibitörü',
+    category: 'enzyme',
+    targets: ['enzyme-comt'],
+    regions: [],
+    effect: 'Periferik COMT blokajı ile L-DOPA biyoyararlılığını artırır.',
+    mechanism: 'Kan-beyin bariyerini geçmez. Periferal COMT\'yi inhibe ederek L-DOPA\'nın 3-O-metildopa\'ya dönüşümünü azaltır → L-DOPA AUC ve yarı ömrü uzar.',
+    clinical: 'Levodopa-karbidopa\'ya eklenen üçüncü ajan (Stalevo: L-DOPA + carbidopa + entacapone). On-off dalgalanmalarını azaltır.',
+    caution: 'İdrar turuncu renklenmesi (zararsız). İshal. Levodopa diskinezisini kötüleştirebilir.'
+  },
+  {
+    id: 'tolc', name: 'Tolkapon', alias: 'Tasmar · Santral + periferik COMT inhibitörü',
+    category: 'enzyme',
+    targets: ['enzyme-comt'],
+    regions: ['mesocortical'],
+    effect: 'Hem periferik hem santral COMT inhibisyonu.',
+    mechanism: 'Entakapondan farklı olarak kan-beyin bariyerini geçer; PFC\'de DA artırıcı etkisi belirgin (PFC\'de DAT seyrek, COMT baskın). Ancak hepatotoksisite ciddi.',
+    clinical: 'Refrakter Parkinson; ALT/AST takibi zorunlu.',
+    caution: 'Fulminan hepatik nekroz vakaları → karaciğer enzim takibi her 2–4 haftada. Genelde 2. basamak.'
+  },
+  {
+    id: 'opic', name: 'Opikapon', alias: 'Ongentys · Yeni nesil COMT inhibitörü',
+    category: 'enzyme',
+    targets: ['enzyme-comt'],
+    regions: [],
+    effect: 'Günde tek doz, periferik selektif COMT.',
+    mechanism: 'Uzun etkili periferik COMT inhibitörü; entakapondan daha uzun etki (24 saat). Hepatotoksisite riski tolkapondan düşük.',
+    clinical: 'Levodopa adjuvanı. On-off motor dalgalanmaları.',
+    caution: 'Diskinezi, halüsinasyon, ortostatik hipotansiyon.'
+  },
+  {
+    id: 'egcg', name: 'EGCG', alias: 'Yeşil çay polifenolü · Zayıf COMT inhibitörü',
+    category: 'enzyme',
+    targets: ['enzyme-comt'],
+    regions: [],
+    effect: 'In vitro zayıf COMT inhibisyonu; klinik etki sınırlı.',
+    mechanism: 'Epigallokatekin gallat, COMT için zayıf substrat-tipi inhibitör. Aynı zamanda DAT zayıf modülasyonu ve antioksidan etki.',
+    clinical: 'Termojenik etki (kafeinle birlikte) doğrudan COMT inhibisyonuna bağlanmıştır — etki klinik olarak küçük.',
+    caution: 'Yüksek doz EGCG ekstrakt hepatotoksisite. CYP etkileşimleri.'
+  },
+  {
+    id: 'querc', name: 'Quersetin', alias: 'Flavonoid · COMT zayıf inhibitör',
+    category: 'enzyme',
+    targets: ['enzyme-comt'],
+    regions: [],
+    effect: 'Zayıf COMT inhibisyonu + geniş antiinflamatuar etki.',
+    mechanism: 'Flavonoid sınıfı; COMT inhibisyonu in vitro gösterilmiş ama klinik plasma seviyelerinde etki marjinal. Aynı zamanda mast hücre stabilizasyonu ve NF-κB inhibisyonu.',
+    clinical: 'Allerji, kronik inflamasyon, antiviral kullanımlar.',
+    caution: 'Düşük biyoyararlılık — pratik etki sınırlı.'
+  },
+
+  {
+    id: 'mph', name: 'Metilfenidat', alias: 'Ritalin, Concerta · DAT inhibitörü',
+    category: 'transporter',
+    targets: ['transporter-dat'],
+    regions: ['mesocortical','nigrostriatal'],
+    effect: 'DAT blokajı → sinaptik DA kalıcılığı uzar. ADHD\'nin birinci basamak farmakoterapisi.',
+    mechanism: 'Dopamin transporterı (DAT) bloğu → reuptake azalır → sinaptik DA artar. PFC\'de DAT seyrek olduğundan oradaki etki kısmen NET inhibisyonu ile DA artışına bağlanır.',
+    clinical: 'ADHD birinci basamak. Narkolepsi. Bilişsel performans için off-label kullanılır.',
+    caution: 'Hiperdopaminerjik kekemelik/Tourette\'i kötüleştirir. Bağımlılık potansiyeli (özellikle IR formlar). Kardiyovasküler risk.'
+  },
+  {
+    id: 'bup', name: 'Bupropion', alias: 'Wellbutrin, Zyban · NDRI',
+    category: 'transporter',
+    targets: ['transporter-dat'],
+    regions: ['mesocortical','mesolimbic'],
+    effect: 'Norepinefrin-dopamin reuptake inhibitörü (NDRI).',
+    mechanism: 'DAT ve NET üzerinden çalışan reuptake inhibitörü; ek olarak nikotinik asetilkolin reseptörü antagonisti. Bu kombinasyon sigara bırakma etkinliğini açıklar.',
+    clinical: 'Atipik depresyon (özellikle hipersomnia, anhedoni), sigara bırakma, ADHD adjuvanı.',
+    caution: 'Konvülziyon eşiğini düşürür (anoreksi, bulimia, kafa travması öyküsü = kontrendike). SSRI\'lardan farklı olarak seksüel disfonksiyon yapmaz.'
+  },
+  {
+    id: 'mod', name: 'Modafinil', alias: 'Provigil · Atipik uyandırıcı',
+    category: 'transporter',
+    targets: ['transporter-dat'],
+    regions: ['mesocortical'],
+    effect: 'Zayıf DAT inhibisyonu + histaminerjik/orexin etkileri.',
+    mechanism: 'Düşük afiniteli DAT inhibitörü olarak DA artırır; aynı zamanda hipotalamusta histamin/oreksin sistemini aktive eder. Klasik amfetamin benzeri DAT ters çevirme etkisi yok.',
+    clinical: 'Narkolepsi, shift work disorder, OSAS\'ta rezidüel uykululuk. Off-label bilişsel performans.',
+    caution: 'CYP3A4 indükleyicisi — kontraseptif ve antikoagülan etkileşimleri. Stevens-Johnson sendromu nadir ama ciddi.'
+  },
+  {
+    id: 'atom', name: 'Atomoksetin', alias: 'Strattera · Selektif NET inhibitörü',
+    category: 'transporter',
+    targets: ['transporter-dat'],
+    regions: ['mesocortical'],
+    effect: 'NET blokajı → PFC\'de DA dolaylı artışı (PFC\'de NET DA\'yı da temizler).',
+    mechanism: 'Selektif NET inhibitörü; PFC\'de NET hem NE hem DA reuptake yaptığı için orada DA\'yı da artırır. Striatum ve NAc\'da DA artışı minimal — bağımlılık potansiyeli düşük.',
+    clinical: 'ADHD, özellikle tik/Tourette komorbiditesinde stimulan alternatifi.',
+    caution: 'İntihar düşüncesi sinyali (siyah kutu uyarısı, pediatrik). Hepatotoksisite nadir.'
+  },
+  {
+    id: 'coca', name: 'Kokain', alias: 'Güçlü DAT inhibitörü · Bağımlılık ajanı',
+    category: 'transporter',
+    targets: ['transporter-dat'],
+    regions: ['mesolimbic','nigrostriatal','mesocortical'],
+    effect: 'Yüksek afiniteli DAT inhibisyonu + Na kanal blokajı.',
+    mechanism: 'DAT, NET, SERT üzerinde tripple reuptake inhibitörü. NAc\'da hızlı dopamin pikinin doğrudan ödül-bağımlılık devrelerini ateşlemesi nedeniyle yüksek bağımlılık potansiyeli. Aynı zamanda lokal anestezik (Na kanal).',
+    clinical: 'Tıbbi kullanım: bazı KBB cerrahilerinde lokal anestezik. Diğer durumlarda yasaklı.',
+    caution: 'Kardiyovasküler katastrofik olaylar (MI, aritmi, ani ölüm), inme, perforated nazal septum, ciddi bağımlılık. Levamizol katkılı kokain agranülositoz yapabilir.'
+  },
+  {
+    id: 'nomi', name: 'Nomifensin', alias: 'NDRI · Tarihsel ajan',
+    category: 'transporter',
+    targets: ['transporter-dat'],
+    regions: ['mesolimbic','mesocortical'],
+    effect: 'DAT/NET reuptake inhibitörü; pazardan çekilmiş.',
+    mechanism: 'NDRI mekanizması; bupropionun öncülü kabul edilebilir.',
+    clinical: 'Depresyon için 1980\'lerde kullanılmış.',
+    caution: 'Hemolitik anemi nedeniyle 1986\'da pazardan çekildi.'
+  },
+  {
+    id: 'reser', name: 'Rezerpin', alias: 'Tarihsel antipsikotik · VMAT2 ireversibl',
+    category: 'transporter',
+    targets: ['transporter-vmat2'],
+    regions: ['mesolimbic','nigrostriatal','mesocortical'],
+    effect: 'VMAT2\'yi ireversibl bloke ederek tüm veziküler monoaminleri boşaltır.',
+    mechanism: 'VMAT2 üzerinde geri dönüşsüz bağlanma; veziküllere monoamin depolanması yapılamaz, sitoplazmik MAO tarafından yıkılır. DA, NE, 5-HT seviyeleri uzun süre boyunca düşer.',
+    clinical: 'Tarihsel olarak ilk antipsikotik ve antihipertansif. Modern pratiğe nadir indikasyon (tardive diskinezi vb).',
+    caution: 'Ciddi depresyon (intihar), parkinsonizm, ortostatik hipotansiyon, ishal. Modern pratikte yer almıyor.'
+  },
+  {
+    id: 'tetra', name: 'Tetrabenazin', alias: 'Xenazine · VMAT2 reversibl',
+    category: 'transporter',
+    targets: ['transporter-vmat2'],
+    regions: ['nigrostriatal'],
+    effect: 'Reversibl VMAT2 blokajı; striatal DA depolarını boşaltır.',
+    mechanism: 'VMAT2 reversibl inhibisyonu; DA daha çok etkilenir (5-HT, NE\'den daha duyarlı). Hareket bozukluklarında kullanılır.',
+    clinical: 'Huntington koresinde, tardiv diskinezide, Tourette\'de etkili.',
+    caution: 'Depresyon ve intihar düşüncesi (siyah kutu), parkinsonizm, sedasyon. CYP2D6 metabolize olur.'
+  },
+  {
+    id: 'valben', name: 'Valbenazin', alias: 'Ingrezza · VMAT2 yeni nesil',
+    category: 'transporter',
+    targets: ['transporter-vmat2'],
+    regions: ['nigrostriatal'],
+    effect: 'Tetrabenazinin uzun etkili türevi; günde tek doz.',
+    mechanism: 'Tetrabenazinin (+)-α-HTBZ metaboliti aktiftir; uzun etkili olduğu için günde tek doz kullanılır. Daha az depresif yan etki.',
+    clinical: 'Tardiv diskinezi onaylı (ABD). Huntington\'da deuterabenazine alternatif.',
+    caution: 'QT uzaması, somnolans. Pahalı.'
+  },
+
+  {
+    id: 'amph', name: 'Amfetamin', alias: 'Adderall · DAT ters + VMAT2 boşaltma',
+    category: 'releaser',
+    targets: ['transporter-dat','transporter-vmat2','enzyme-mao'],
+    regions: ['mesolimbic','mesocortical','nigrostriatal'],
+    effect: 'Üçlü mekanizmalı en güçlü DA salıvereni.',
+    mechanism: 'DAT\'ı tersine çevirip sitoplazmik DA\'yı sinapsa pompalar, VMAT2\'yi inhibe ederek veziküler depoyu sitoplazmaya boşaltır, hafif MAO inhibisyonu yapar. Üçlü mekanizma kombinasyonu klasik DAT inhibitörlerinden çok daha güçlü DA salımı.',
+    clinical: 'ADHD ikinci basamak (metilfenidat alternatifi). Narkolepsi. Obezite (artık nadir).',
+    caution: 'Yüksek bağımlılık potansiyeli, kardiyovasküler risk, hiperdopaminerjik fenotipte ciddi kötüleşme, psikoz tetikleyebilir.'
+  },
+  {
+    id: 'dexamf', name: 'Dekstroamfetamin', alias: 'Dexedrine · Amfetaminin daha güçlü d-izomeri',
+    category: 'releaser',
+    targets: ['transporter-dat','transporter-vmat2'],
+    regions: ['mesolimbic','mesocortical','nigrostriatal'],
+    effect: 'd-amfetamin; santral etki l-amfetaminden 2–4 kat güçlü.',
+    mechanism: 'Amfetamin ile aynı mekanizma; d-izomer kan-beyin bariyerini daha verimli geçer ve santral DA salımı daha güçlü.',
+    clinical: 'ADHD, narkolepsi.',
+    caution: 'Amfetamin ile aynı; biraz daha yüksek bağımlılık riski.'
+  },
+  {
+    id: 'lisdex', name: 'Lisdeksamfetamin', alias: 'Vyvanse · Prodrug, d-amfetamin',
+    category: 'releaser',
+    targets: ['transporter-dat','transporter-vmat2'],
+    regions: ['mesolimbic','mesocortical','nigrostriatal'],
+    effect: 'Lisin-d-amfetamin prodrug; eritrosit peptidazı ile aktif d-amfetamine dönüşür.',
+    mechanism: 'Prodrug yapısı düzgün, kademeli salınım sağlar — pik-vadi farkını düşürür. Burundan çekme veya damar yoluyla suistimal güçleştirilmiş.',
+    clinical: 'ADHD birinci basamak alternatifi (özellikle suistimal endişesi olan hastalarda). Binge-eating disorder onaylı.',
+    caution: 'Amfetamin yan etkileri; daha kademeli ama hala kontrol altında ilaç.'
+  },
+  {
+    id: 'meth', name: 'Metamfetamin', alias: 'Desoxyn · Kristal meth',
+    category: 'releaser',
+    targets: ['transporter-dat','transporter-vmat2','enzyme-mao'],
+    regions: ['mesolimbic','mesocortical','nigrostriatal'],
+    effect: 'En lipofilik amfetamin türevi; KBB geçişi en yüksek.',
+    mechanism: 'Amfetamin mekanizması + kan-beyin bariyeri geçişi çok daha güçlü → daha hızlı ve daha yüksek DA piki.',
+    clinical: 'Onaylı endikasyon: ABD\'de obezite ve ADHD (çok nadir). Daha çok illegal kullanım.',
+    caution: 'En yüksek bağımlılık potansiyeli, nörotoksisite (DA terminal hasarı), psikoz, kardiyovasküler katastrof.'
+  },
+  {
+    id: 'mdma', name: 'MDMA', alias: 'Ekstazi · DA + 5-HT + NE üçlü salıvereni',
+    category: 'releaser',
+    targets: ['transporter-dat','transporter-vmat2'],
+    regions: ['mesolimbic','mesocortical'],
+    effect: '5-HT salıverenliği DA\'dan baskın; "entaktojen" sınıfı.',
+    mechanism: 'SERT > DAT > NET üzerinden reverse transport. Veziküler 5-HT, DA, NE depolarını boşaltır. Klasik amfetaminden farklı olarak 5-HT etkisi baskın → empatojenik subjektif etki.',
+    clinical: 'FAZ III çalışmalar travma sonrası stres bozukluğunda terapi-asistanı olarak (FDA onayı tartışmalı, 2024).',
+    caution: 'Hipertermi, hiponatremi, 5-HT toksisitesi, kalıcı serotonerjik nörotoksisite hayvan modellerinde. SSRI ile etkileşim.'
+  },
+
+  {
+    id: 'bromo', name: 'Bromokriptin', alias: 'Parlodel · D2 agonisti, ergot türevi',
+    category: 'agonist',
+    targets: ['receptor-d2'],
+    regions: ['nigrostriatal','tuberoinfundibular'],
+    effect: 'Direkt D2 agonisti.',
+    mechanism: 'Ergot türevi D2 reseptör agonisti (D3, D1 üzerinde de aktivite var). Tuberoinfundibular sistemde D2 aktivasyonu prolaktini baskılar.',
+    clinical: 'Prolaktinoma, hiperprolaktinemi, post-partum laktasyon supresyonu. Geçmişte Parkinson, şimdi nadir.',
+    caution: 'Kardiyak valvulopati (ergot türevleri), pulmoner fibrozis, ortostatik hipotansiyon. Modern pratikte daha çok kabergolin tercih edilir.'
+  },
+  {
+    id: 'prami', name: 'Pramipeksol', alias: 'Mirapex · D2/D3 selektif',
+    category: 'agonist',
+    targets: ['receptor-d2'],
+    regions: ['nigrostriatal','mesolimbic'],
+    effect: 'D3 > D2 selektif agonist; non-ergot.',
+    mechanism: 'D3 baskın olmak üzere D2 ailesi agonisti. Non-ergot yapısı sayesinde valvulopati riski yok.',
+    clinical: 'Parkinson, restless legs syndrome (RLS). Depresyonda da off-label.',
+    caution: 'Dürtü kontrol bozukluğu (kumar, hiperseksüalite, alışveriş — D3 mezolimbik etkisi), aniden uyku atakları, ortostatik hipotansiyon.'
+  },
+  {
+    id: 'ropi', name: 'Ropinirol', alias: 'Requip · D2/D3 selektif',
+    category: 'agonist',
+    targets: ['receptor-d2'],
+    regions: ['nigrostriatal','mesolimbic'],
+    effect: 'Pramipeksole benzer non-ergot D2/D3 agonisti.',
+    mechanism: 'D2 ailesi non-ergot agonisti; pramipeksolden D3 selektivitesi daha az.',
+    clinical: 'Parkinson, RLS.',
+    caution: 'Dürtü kontrol bozukluğu, somnolans, ortostatik hipotansiyon. CYP1A2 metabolize — sigara içenlerde dozaj farklı olabilir.'
+  },
+  {
+    id: 'roti', name: 'Rotigotin', alias: 'Neupro · Transdermal D2/D3 agonisti',
+    category: 'agonist',
+    targets: ['receptor-d2'],
+    regions: ['nigrostriatal'],
+    effect: 'Sürekli 24 saat transdermal salınım.',
+    mechanism: 'D3/D2/D1 receptor non-ergot agonisti; transdermal patch ile 24 saat sabit plazma seviyesi sağlar — pulsatil L-DOPA\'nın aksine sürekli stimülasyon.',
+    clinical: 'Parkinson, RLS.',
+    caution: 'Cilt irritasyonu, ICD, somnolans.'
+  },
+  {
+    id: 'apo', name: 'Apomorfin', alias: 'Apokyn · D1/D2 agonisti, kurtarma tedavisi',
+    category: 'agonist',
+    targets: ['receptor-d1','receptor-d2'],
+    regions: ['nigrostriatal'],
+    effect: 'Geniş spektrum D1/D2 agonisti, parenteral.',
+    mechanism: 'D1 ve D2 ailesi üzerinde güçlü agonist. Oral biyoyararlılık zayıf — subkütan veya sublingual.',
+    clinical: 'Parkinson "off" dönemleri için kurtarma enjeksiyonu. Erektil disfonksiyonda da (sublingual) onaylı.',
+    caution: 'Bulantı (5-HT3 antagonisti antiemetik ön tedavi şart), ortostatik hipotansiyon, halüsinasyon.'
+  },
+  {
+    id: 'cab', name: 'Kabergolin', alias: 'Dostinex · Uzun etkili D2 agonisti',
+    category: 'agonist',
+    targets: ['receptor-d2'],
+    regions: ['tuberoinfundibular'],
+    effect: 'Haftada 1–2 doz yeterli; prolaktinoma altın standardı.',
+    mechanism: 'Ergot türevi D2 selektif agonist; çok uzun yarı ömür (60–100 saat).',
+    clinical: 'Prolaktinoma, hiperprolaktinemi. Bromokriptinden daha etkili, daha az yan etki.',
+    caution: 'Yüksek dozda (Parkinson dozu) valvulopati riski; düşük endokrin dozlarda risk düşüktür ama ekokardiyografi takibi önerilir.'
+  },
+
+  {
+    id: 'halo', name: 'Haloperidol', alias: 'Haldol · Tipik antipsikotik · D2 saf antagonisti',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic','nigrostriatal','tuberoinfundibular'],
+    effect: 'Yüksek afiniteli D2 antagonisti; klasik EPS profili.',
+    mechanism: 'Saf D2 antagonisti (ek serotonerjik etki minimum). 4 dopaminerjik yolakta da bloke eder — mezolimbik antipsikotik etki, nigrostriatal EPS, tuberoinfundibular hiperprolaktinemi.',
+    clinical: 'Akut psikoz, agitasyon (parenteral), Tourette, delirium.',
+    caution: 'EPS (akut distoni, parkinsonizm, akatizi, tardiv diskinezi), nöroleptik malign sendrom, QT uzaması, hiperprolaktinemi.'
+  },
+  {
+    id: 'cpz', name: 'Klorpromazin', alias: 'Largactil · İlk tipik antipsikotik',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic','nigrostriatal','tuberoinfundibular'],
+    effect: 'Tarihsel öneme sahip; geniş reseptör profili.',
+    mechanism: 'D2 antagonisti yanı sıra H1, M1, α1 blokajı belirgin → sedasyon, antiemetik, antikolinerjik, ortostatik hipotansiyon.',
+    clinical: 'Şizofreni, ciddi hıçkırık (off-label).',
+    caution: 'Sedasyon, ortostaz, kilo alımı, kolestatik sarılık, fotosensitivite.'
+  },
+  {
+    id: 'risp', name: 'Risperidon', alias: 'Risperdal · Atipik · D2 + 5HT2A',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic','nigrostriatal','tuberoinfundibular'],
+    effect: 'D2 + 5HT2A antagonisti; orta-düşük dozda EPS yoksun.',
+    mechanism: 'D2 blokajına ek olarak 5-HT2A blokajı, prefrontal DA salımını dolaylı artırarak negatif semptomları ve EPS\'i azaltır. Yüksek dozlarda D2 baskınlığı ortaya çıkar.',
+    clinical: 'Şizofreni, otizm irritabilitesi, demans davranışsal semptomları (dikkatli), refrakter Tourette ve kekemelik.',
+    caution: 'Hiperprolaktinemi (D2 antagonistleri arasında en yüksek), kilo alımı, metabolik sendrom, sedasyon.'
+  },
+  {
+    id: 'olan', name: 'Olanzapin', alias: 'Zyprexa · Atipik · Geniş profilli',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic','tuberoinfundibular'],
+    effect: 'Multireseptör antagonist; metabolik yan etkiler belirgin.',
+    mechanism: 'D2, 5-HT2A, H1, M, α1 antagonisti. Risperidondan EPS riski daha düşük, ama metabolik yan etkiler (kilo, lipid, glukoz) en yüksek.',
+    clinical: 'Şizofreni, bipolar mani, kanser kemoterapi bulantısı (off-label, çok etkili).',
+    caution: 'Belirgin kilo alımı, diabetogenez, dislipidemi, sedasyon. Tedaviye uyum metabolik yan etkilerle güçleşir.'
+  },
+  {
+    id: 'quet', name: 'Ketiapin', alias: 'Seroquel · Atipik · Düşük doz uyku, yüksek doz antipsikotik',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic'],
+    effect: 'Düşük doz: H1 baskın → sedatif. Yüksek doz: D2 etkisi belirgin.',
+    mechanism: 'Geniş reseptör profili; düşük dozda (25–100 mg) H1 antihistamin etkisi baskın (uyku), orta dozda 5-HT2A baskın (depresyon adjuvanı), yüksek dozda (>300 mg) D2 etkisi yeterli (antipsikotik).',
+    clinical: 'Şizofreni, bipolar, refrakter depresyon adjuvanı (XR formu), off-label uyku.',
+    caution: 'Sedasyon, ortostaz, kilo alımı, QT uzaması. Off-label uyku amaçlı kullanım yan etki/yarar oranı sorgulanır.'
+  },
+  {
+    id: 'cloz', name: 'Klozapin', alias: 'Clozaril · Atipik · Refrakter şizofreni',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic'],
+    effect: 'Düşük D2 afinitesi + geniş reseptör profili; EPS yok.',
+    mechanism: 'D2 afinitesi diğerlerinden düşük (D4 ve 5-HT2A daha baskın). EPS yapmaz, prolaktini değiştirmez. Refrakter şizofrenide en etkili antipsikotik.',
+    clinical: 'Refrakter şizofreni (3. basamak), şizofrenide intihar önleme onaylı.',
+    caution: 'Agranülositoz (haftalık-aylık tam kan sayımı zorunlu), miyokardit, konvülziyon, ağır sialore, ileus.'
+  },
+  {
+    id: 'arip', name: 'Aripiprazol', alias: 'Abilify · D2 parsiyel agonisti',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic','tuberoinfundibular'],
+    effect: 'D2 ve 5-HT1A parsiyel agonisti, 5-HT2A antagonisti — "dopamin stabilizatörü".',
+    mechanism: 'D2 parsiyel agonisti — yüksek DA varsa antagonist gibi davranır, düşük DA varsa zayıf agonist gibi. Mezolimbikte antipsikotik etki, nigrostriatal/tuberoinfundibularde DA tonusunu fazla düşürmez.',
+    clinical: 'Şizofreni, bipolar, depresyon adjuvanı, otizm irritabilitesi, Tourette.',
+    caution: 'Daha az hiperprolaktinemi, daha az kilo alımı. Ama akatizi belirgin. Patolojik kumar/hiperseksüalite (parsiyel agonizm).'
+  },
+  {
+    id: 'cari', name: 'Karipirazin', alias: 'Vraylar · D3 selektif parsiyel agonist',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic','mesocortical'],
+    effect: 'D3 > D2 parsiyel agonisti; negatif semptomlarda etkili.',
+    mechanism: 'D3 reseptörüne yüksek afinite — şizofreninin negatif semptomları ve bilişsel disfonksiyonunda D3 modülasyonu hipotezi.',
+    clinical: 'Şizofreni, bipolar.',
+    caution: 'Akatizi, EPS düşük ama mevcut. Pahalı.'
+  },
+  {
+    id: 'brexp', name: 'Brekspiprazol', alias: 'Rexulti · Daha selektif D2 parsiyel agonisti',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic'],
+    effect: 'Aripiprazolün daha selektif türevi; daha az akatizi.',
+    mechanism: 'Aripiprazol benzeri ama 5-HT1A parsiyel agonizmi daha güçlü, D2 parsiyel agonizmi daha düşük → daha az akatizi.',
+    clinical: 'Şizofreni, depresyon adjuvanı.',
+    caution: 'Aripiprazol ile benzer ama daha az akatizi. Maliyet yüksek.'
+  },
+  {
+    id: 'mclo', name: 'Metoklopramid', alias: 'Reglan · D2 antagonisti + 5-HT4 agonisti',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['tuberoinfundibular'],
+    effect: 'Gastrik motilite + antiemetik etki.',
+    mechanism: 'Periferik ve santral D2 blokajı + 5-HT4 agonizmi; gastrik boşalmayı hızlandırır. Antiemetik etki area postremada D2 blokajına bağlı.',
+    clinical: 'Diabetik gastroparezi, postoperatif bulantı, migren ile bulantı, GERD.',
+    caution: 'Tardiv diskinezi (siyah kutu), özellikle yaşlı kadınlarda. EPS, hiperprolaktinemi. Kısa süreli kullanım önerilir.'
+  },
+  {
+    id: 'domp', name: 'Domperidon', alias: 'Motilium · Periferik D2 antagonisti',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['tuberoinfundibular'],
+    effect: 'Kan-beyin bariyerini geçmez — santral EPS yok.',
+    mechanism: 'Kan-beyin bariyerini geçmez (P-gp ile dışarı pompalanır). Periferik D2 blokajı (gastrik) ve area postrema (BBB dışı) etkisi var.',
+    clinical: 'Gastroparezi, antiemetik, post-partum laktasyon artırma (off-label).',
+    caution: 'QT uzaması (FDA tarafından ABD\'de onaylanmamış, Avrupa ve Türkiye\'de var). Hiperprolaktinemi.'
+  },
+  {
+    id: 'sulp', name: 'Sülpirit', alias: 'Dogmatil · D2/D3 selektif antagonist',
+    category: 'antagonist',
+    targets: ['receptor-d2'],
+    regions: ['mesolimbic','tuberoinfundibular'],
+    effect: 'Düşük doz: prokinetik. Yüksek doz: antipsikotik.',
+    mechanism: 'Selektif D2/D3 antagonisti; düşük dozda presinaptik otoreseptör blokajı → DA salımı artar (paradoks antidepresan etki). Yüksek dozda postsinaptik blokaj → antipsikotik.',
+    clinical: 'Depresyon (özellikle Avrupa), fonksiyonel dispepsi, vertigo (Türkiye\'de yaygın endikasyon), şizofreni.',
+    caution: 'Hiperprolaktinemi belirgin, sedasyon, kilo alımı. Doza bağlı etki dramatik farklılık gösterir.'
+  },
+
+  {
+    id: 'ltheanine', name: 'L-theanin', alias: 'Camellia sinensis amino asidi · İndirekt DA modülatörü',
+    category: 'modulator',
+    targets: ['node-da'],
+    regions: ['nigrostriatal','mesolimbic'],
+    effect: 'Striatal DA salımını indirekt artırır + GABA, glisin, 5-HT artırır.',
+    mechanism: 'Glutamat reseptör modülasyonu (AMPA/kainat zayıf antagonizm, NMDA modülasyon) üzerinden presinaptik DA salımını artırır. Aynı zamanda alfa dalga aktivitesi ve GABAerjik tonusu yükseltir.',
+    clinical: 'Anksiyolitik, kafein ile birlikte "calm alertness". Tipik doz 100–200 mg.',
+    caution: 'Hiperdopaminerjik fenotipte (Tourette, kekemelik) ciddi kötüleştirici — striatal DA salımını indirekt artırarak konuşma motor seçim devresini destabilize eder.'
+  },
+  {
+    id: 'caf', name: 'Kafein', alias: 'Methylxanthine · A2A antagonisti',
+    category: 'modulator',
+    targets: ['receptor-d2'],
+    regions: ['nigrostriatal','mesolimbic'],
+    effect: 'A2A blokajı → striatal D2 sinyalini disinhibe eder.',
+    mechanism: 'Adenozin A2A reseptör blokajı; striatumda A2A-D2 heteromeri bulunduğundan A2A blokajı D2 sinyalini güçlendirir → indirekt dopaminerjik uyarım. Aynı zamanda PDE inhibisyonu ve nikotinik AChR modülasyonu.',
+    clinical: 'Uyanıklık, bilişsel performans, baş ağrısı, Parkinson koruyucu epidemiyolojik veri.',
+    caution: 'Hiperdopaminerjik fenotipte tik/kekemelik kötüleşmesi, anksiyete, uykusuzluk, kalp ritim bozuklukları. CYP1A2 polimorfizmi metabolizmayı belirler.'
+  },
+  {
+    id: 'nic', name: 'Nikotin', alias: 'Nikotinik AChR agonisti · İndirekt DA',
+    category: 'modulator',
+    targets: ['node-da'],
+    regions: ['mesolimbic','mesocortical','nigrostriatal'],
+    effect: 'VTA nikotinik reseptör aktivasyonu → güçlü mezolimbik DA salımı.',
+    mechanism: 'VTA dopaminerjik nöronlardaki α4β2 nikotinik reseptörleri aktive ederek burst firing\'i artırır → mezolimbik DA salımı (klasik ödül ve bağımlılık devresinin temeli). Aynı zamanda PFC\'de α7 üzerinden bilişsel etkiler.',
+    clinical: 'Sigara bırakma terapisi (gum, patch, lozenges). Bazı nörodejeneratif hastalıklarda araştırma.',
+    caution: 'Bağımlılık potansiyeli yüksek, kardiyovasküler riskler, gebelikte fötal etki.'
+  },
+  {
+    id: 'gly', name: 'Glisin', alias: 'Amino asit · GlyR + NMDA modülatörü',
+    category: 'modulator',
+    targets: [],
+    regions: [],
+    effect: 'Dopaminerjik sisteme doğrudan etki yok; inhibitör nörotransmitter rolü.',
+    mechanism: 'Klasik inhibitör nörotransmitter (özellikle omurilik ve beyin sapı GlyR), aynı zamanda NMDA reseptörünün glisin bağlı yerinin agonisti. Dopaminerjik sisteme doğrudan etki etmez.',
+    clinical: '3 g/gün akşam uyku kalitesini iyileştirir (RCT verisi). Hiperdopaminerjik fenotipte güvenli sedatif alternatif.',
+    caution: 'Tolere edilebilir; nadiren mide rahatsızlığı.'
+  },
+  {
+    id: 'apig', name: 'Apigenin', alias: 'Papatya flavonoidi · GABA-A pozitif allosterik modülatör',
+    category: 'modulator',
+    targets: [],
+    regions: [],
+    effect: 'GABA-A modülasyonu; dopaminerjik sisteme doğrudan etki yok.',
+    mechanism: 'Benzodiazepin bağlanma bölgesinden farklı bir alanda GABA-A pozitif allosterik modülasyonu. Çocuklarda papatya çayı şeklinde tarihsel sedatif olarak kullanılır.',
+    clinical: 'Hafif anksiyolitik, uyku desteği. Doza ve formulasyona göre etki değişken.',
+    caution: 'Yüksek doz östrojenik etki gösterebilir. Kumadin ile etkileşim teorik.'
+  }
+];
+
+const PATHWAY_LABELS = {
+  nigrostriatal: 'Nigrostriatal',
+  mesolimbic: 'Mezolimbik',
+  mesocortical: 'Mezokortikal',
+  tuberoinfundibular: 'Tuberoinfundibular'
+};
+
+// =========== STATE ===========
+let state = {
+  selectedId: null,
+  category: 'all',
+  search: ''
+};
+
+// =========== INIT ===========
+function init() {
+  document.getElementById('stat-total').textContent = AGENTS.length;
+  buildCategoryFilters();
+  renderCards();
+  attachEvents();
+}
+
+// =========== CATEGORY FILTERS ===========
+function buildCategoryFilters() {
+  const container = document.getElementById('catFilters');
+  const cats = Object.keys(CATEGORIES);
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'cat-btn';
+    btn.dataset.cat = cat;
+    btn.innerHTML = `<span class="dot" style="background: var(--cat-${cat});"></span>${CATEGORIES[cat].label}`;
+    container.appendChild(btn);
+  });
+
+  container.addEventListener('click', e => {
+    const btn = e.target.closest('.cat-btn');
+    if (!btn) return;
+    state.category = btn.dataset.cat;
+    container.querySelectorAll('.cat-btn').forEach(b => b.classList.toggle('active', b === btn));
+    renderCards();
+  });
+}
+
+// =========== CARD RENDER ===========
+function renderCards() {
+  const grid = document.getElementById('cardsGrid');
+  const q = state.search.toLowerCase().trim();
+  const cat = state.category;
+
+  const filtered = AGENTS.filter(a => {
+    if (cat !== 'all' && a.category !== cat) return false;
+    if (!q) return true;
+    const hay = [a.name, a.alias, a.effect, a.mechanism, a.clinical, ...a.targets.map(t => TARGET_LABELS[t] || '')].join(' ').toLowerCase();
+    return hay.includes(q);
+  });
+
+  document.getElementById('resultMeta').textContent = `${filtered.length} / ${AGENTS.length} ajan gösteriliyor`;
+
+  grid.innerHTML = '';
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="no-results"><div class="big">Eşleşen ajan yok</div><div>Arama veya filtreyi değiştir.</div></div>`;
+    return;
+  }
+
+  filtered.forEach(a => {
+    const card = document.createElement('button');
+    card.className = 'card';
+    if (state.selectedId === a.id) card.classList.add('active');
+    card.style.setProperty('--cat', `var(--cat-${a.category})`);
+    card.dataset.id = a.id;
+    const targetTags = a.targets.length
+      ? `<div class="card-targets">${a.targets.slice(0, 4).map(t => `<span class="target-tag">${TARGET_LABELS[t] || t}</span>`).join('')}${a.targets.length > 4 ? `<span class="target-tag">+${a.targets.length - 4}</span>` : ''}</div>`
+      : `<div class="card-targets"><span class="target-tag">DA-nötr</span></div>`;
+    card.innerHTML = `
+      <div class="card-cat"><span class="dot"></span>${CATEGORIES[a.category].label}</div>
+      <div class="card-name">${a.name}</div>
+      <div class="card-effect">${a.effect}</div>
+      ${targetTags}
+    `;
+    grid.appendChild(card);
+  });
+}
+
+// =========== DETAIL PANEL ===========
+function showDetail(id) {
+  const agent = AGENTS.find(a => a.id === id);
+  if (!agent) return;
+  state.selectedId = id;
+
+  document.querySelectorAll('.card').forEach(c => c.classList.toggle('active', c.dataset.id === id));
+
+  const targetTagsHtml = agent.targets.length
+    ? agent.targets.map(t => `<span class="target-tag">${TARGET_LABELS[t] || t}</span>`).join('')
+    : '<span class="target-tag">Dopaminerjik nötr</span>';
+
+  const regionsHtml = agent.regions.length
+    ? agent.regions.map(r => `<span class="target-tag">${PATHWAY_LABELS[r] || r}</span>`).join('')
+    : '<span class="target-tag" style="opacity:0.6;">—</span>';
+
+  const html = `
+    <div class="detail-cat" style="--cat: var(--cat-${agent.category}); color: var(--cat-${agent.category});">
+      <span class="dot"></span>${CATEGORIES[agent.category].label}
+    </div>
+    <div class="detail-name">${agent.name}</div>
+    <div class="detail-alias">${agent.alias || ''}</div>
+    <div class="detail-effect" style="border-left-color: var(--cat-${agent.category});">${agent.effect}</div>
+    <div class="detail-block">
+      <h4>Mekanizma</h4>
+      <p>${agent.mechanism}</p>
+    </div>
+    <div class="detail-block">
+      <h4>Klinik kullanım</h4>
+      <p>${agent.clinical}</p>
+    </div>
+    ${agent.caution ? `<div class="detail-block caution"><h4>Uyarı &amp; etkileşim</h4><p>${agent.caution}</p></div>` : ''}
+    <div class="detail-block">
+      <h4>Moleküler hedef</h4>
+      <div class="detail-targets">${targetTagsHtml}</div>
+    </div>
+    <div class="detail-block">
+      <h4>Etkilenen yolaklar</h4>
+      <div class="detail-targets">${regionsHtml}</div>
+    </div>
+  `;
+  document.getElementById('detailContent').innerHTML = html;
+  document.getElementById('detailEmpty').style.display = 'none';
+  document.getElementById('detailContent').style.display = 'block';
+  document.getElementById('detailPanel').classList.add('open');
+
+  highlightSvg(agent.targets);
+  highlightPathways(agent.regions);
+}
+
+// =========== SVG HIGHLIGHT ===========
+function highlightSvg(targets) {
+  const has = targets && targets.length > 0;
+  ALL_TARGETS.forEach(t => {
+    const el = document.getElementById(t);
+    if (!el) return;
+    el.classList.remove('hl', 'dim');
+    if (!has) return;
+    if (targets.includes(t)) el.classList.add('hl');
+    else el.classList.add('dim');
+  });
+}
+
+function highlightPathways(regions) {
+  document.querySelectorAll('.pp').forEach(p => {
+    p.classList.toggle('hl', regions && regions.includes(p.dataset.id));
+  });
+}
+
+// =========== EVENTS ===========
+function attachEvents() {
+  document.getElementById('cardsGrid').addEventListener('click', e => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+    showDetail(card.dataset.id);
+    if (window.innerWidth < 1101) {
+      document.getElementById('detailPanel').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  });
+
+  const searchInput = document.getElementById('searchInput');
+  let searchTimer;
+  searchInput.addEventListener('input', e => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => {
+      state.search = e.target.value;
+      renderCards();
+    }, 120);
+  });
+
+  document.getElementById('closeBtn').addEventListener('click', () => {
+    document.getElementById('detailPanel').classList.remove('open');
+  });
+
+  document.getElementById('themeToggle').addEventListener('click', () => {
+    const cur = document.documentElement.getAttribute('data-theme');
+    const next = cur === 'light' ? 'dark' : 'light';
+    document.documentElement.setAttribute('data-theme', next);
+    try { localStorage.setItem('dopamin-theme', next); } catch (e) {}
+  });
+
+  try {
+    const saved = localStorage.getItem('dopamin-theme');
+    if (saved) document.documentElement.setAttribute('data-theme', saved);
+  } catch (e) {}
+}
+
+init();
+</script>
+</body>
+</html>
