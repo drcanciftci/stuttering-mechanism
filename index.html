@@ -173,6 +173,12 @@
     gap: 12px;
     align-items: flex-end;
   }
+  .theme-toggle.inline {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--r-md);
+    flex-shrink: 0;
+  }
   .theme-toggle {
     background: var(--bg-card);
     border: 1px solid var(--line-2);
@@ -224,9 +230,12 @@
 
   /* ============ DIAGRAM SECTION ============ */
   section.diagram-section {
-    padding: 64px 0 48px;
+    padding: 48px 0 40px;
     border-bottom: 1px solid var(--line);
     background: var(--bg);
+  }
+  section.diagram-section.first {
+    padding-top: 56px;
   }
   .section-head {
     margin-bottom: 40px;
@@ -440,7 +449,7 @@
 
   /* ============ CARD GRID ============ */
   section.cards-section {
-    padding: 32px 0 80px;
+    padding: 32px 0 100px;
     background: var(--bg);
   }
   .layout {
@@ -645,6 +654,52 @@
     padding: 5px 9px;
   }
 
+  .studies {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .study {
+    padding: 12px 14px;
+    background: var(--bg-2);
+    border-radius: var(--r-sm);
+    border-left: 2px solid var(--accent);
+  }
+  .study-cite {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+    line-height: 1.45;
+  }
+  .study-note {
+    font-size: 13px;
+    color: var(--ink);
+    line-height: 1.55;
+    margin-bottom: 8px;
+  }
+  .study-links {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .study-links a {
+    color: var(--ink-3);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--line-3);
+    padding-bottom: 1px;
+    transition: var(--tr);
+  }
+  .study-links a:hover {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+
   /* ============ FOOTER ============ */
   footer {
     padding: 48px 0 40px;
@@ -709,16 +764,17 @@
       border-radius: var(--r-lg) var(--r-lg) 0 0;
       transform: translateY(100%);
       transition: transform .35s cubic-bezier(.4,0,.2,1);
-      max-height: 78vh;
+      max-height: 82vh;
       z-index: 100;
       border-bottom: none;
       box-shadow: 0 -8px 32px rgba(0,0,0,0.32);
+      padding: 28px 22px 36px;
     }
     .detail-panel.open { transform: translateY(0); }
     .detail-panel .close-btn {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 14px;
+      right: 14px;
       background: var(--bg-2);
       border: 1px solid var(--line-2);
       width: 32px; height: 32px;
@@ -733,55 +789,54 @@
   @media (min-width: 1101px) {
     .close-btn { display: none; }
   }
-  @media (max-width: 720px) {
-    header.hero { padding: 56px 0 44px; }
-    .hero-grid { grid-template-columns: 1fr; }
-    .hero-actions { align-items: flex-start; }
-    .stat-strip { gap: 22px; flex-wrap: wrap; }
-    section.diagram-section { padding: 44px 0 32px; }
-    .diagram-card { padding: 20px 12px; }
-    .footer-inner { grid-template-columns: 1fr; }
-    .disclaimer { text-align: left; max-width: 100%; }
+  @media (max-width: 860px) {
+    .wrap { padding: 0 18px; }
+    section.diagram-section { padding: 32px 0 24px; }
+    section.diagram-section.first { padding-top: 36px; }
+    .diagram-card { padding: 18px 12px; }
+    section.filter-section { padding: 22px 0 10px; }
+    .search-wrap { min-width: 100%; flex-basis: 100%; }
+    .theme-toggle.inline { order: -1; align-self: flex-start; }
+    .filter-row { gap: 12px; }
+    .cat-filters { gap: 5px; }
+    .cat-btn { padding: 7px 11px; font-size: 12px; }
+    .cards-grid {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .card { padding: 14px 14px 12px; }
+    .card-name { font-size: 16px; }
+    .card-effect { font-size: 12px; }
+    .detail-name { font-size: 26px; }
+    .pathway-pills { gap: 6px; }
+    .pp { font-size: 11px; padding: 7px 11px; }
+  }
+  @media (max-width: 520px) {
+    .wrap { padding: 0 14px; }
+    section.diagram-section { padding: 24px 0 16px; }
+    section.diagram-section.first { padding-top: 28px; }
+    .diagram-card { padding: 14px 8px; }
+    .cards-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .card { padding: 12px 12px 10px; }
+    .card-name { font-size: 15px; }
+    .card-targets { gap: 3px; margin-top: 8px; }
+    .target-tag { font-size: 8px; padding: 2px 5px; }
+    .detail-panel { padding: 24px 18px 32px; max-height: 86vh; }
+    .detail-name { font-size: 22px; }
+    .detail-effect { font-size: 14px; padding: 12px 14px; }
+    .detail-block p { font-size: 13px; }
+    .study { padding: 10px 12px; }
+    .study-note { font-size: 12px; }
   }
 </style>
 </head>
 <body>
 
-<header class="hero">
+<section class="diagram-section first">
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <span class="kicker">Mekanizma Komutanı · Klinik Pratiği Destekleyen Görsel Araç</span>
-        <h1 class="title">Dopaminerjik <em>sistem haritası</em></h1>
-        <p class="lede">
-          Tirozinden epinefrine uzanan sentez yolağı, sinaptik aktörler ve <strong>60+ ajanın</strong> moleküler hedefleri tek bir haritada.
-          Substrat, kofaktör, enzim inhibitörü, transporter modülatörü, reseptör agonisti/antagonisti ve indirekt etkili modülatörler — etki noktaları görsel olarak vurgulanır.
-        </p>
-      </div>
-      <div class="hero-actions">
-        <button class="theme-toggle" id="themeToggle" aria-label="Tema değiştir" title="Tema değiştir">
-          <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="stat-strip">
-      <div class="stat"><span class="stat-num" id="stat-total">66</span><span class="stat-lbl">Moleküler ajan</span></div>
-      <div class="stat"><span class="stat-num">9</span><span class="stat-lbl">Enzim &amp; transporter</span></div>
-      <div class="stat"><span class="stat-num">4</span><span class="stat-lbl">Dopaminerjik yolak</span></div>
-      <div class="stat"><span class="stat-num">8</span><span class="stat-lbl">Etki kategorisi</span></div>
-    </div>
-  </div>
-</header>
-
-<section class="diagram-section">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="lbl">01 · Sentez yolağı &amp; sinaptik aktörler</span>
-      <h2>Tirozinden HVA'ya — bir nörotransmitterin yaşam döngüsü</h2>
-      <p>Üst sıra sentez zincirini gösterir; alt sıra sinaptik aktörleri (depo, geri alım, yıkım, reseptör) içerir. Bir ajana tıkladığında hedefler vurgulanır, etkilenen beyin yolakları aşağıda işaretlenir.</p>
-    </div>
-
     <div class="diagram-card">
       <svg class="pathway" viewBox="0 0 760 260" role="img" aria-labelledby="diagTitle diagDesc">
         <title id="diagTitle">Dopaminerjik yolak şeması</title>
@@ -909,6 +964,10 @@
       <div class="cat-filters" id="catFilters">
         <button class="cat-btn active" data-cat="all">Tümü</button>
       </div>
+      <button class="theme-toggle inline" id="themeToggle" aria-label="Tema değiştir" title="Tema değiştir">
+        <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
     </div>
     <div class="meta" style="margin-top: 10px;" id="resultMeta">— ajan gösteriliyor</div>
   </div>
@@ -932,20 +991,6 @@
     </div>
   </div>
 </section>
-
-<footer>
-  <div class="wrap">
-    <div class="footer-inner">
-      <div>
-        <div class="signature">Mekanizma kazansın.</div>
-        <div class="signature-sub">Uzm. Dr. İsmail Can Çiftçi · İç Hastalıkları</div>
-      </div>
-      <div class="disclaimer">
-        Bilimsel referans amaçlı eğitim materyalidir. Klinik karar için kanıt düzeyi, hasta bireyselliği ve güncel kılavuzlar göz önünde bulundurulmalıdır. Tıbbi tavsiye değildir.
-      </div>
-    </div>
-  </div>
-</footer>
 
 <script>
 const CATEGORIES = {
@@ -1018,7 +1063,8 @@ const AGENTS = [
     effect: 'TH adımını atlar; AADC tarafından doğrudan DA\'ya çevrilir.',
     mechanism: 'Kan-beyin bariyerini büyük amino asit taşıyıcısıyla geçer. Tirozin hidroksilaz hız-kısıtlayıcı adımını bypass eder. Periferik karbidopa/benserazid kombinasyonu periferal AADC inhibe ederek beyin biyoyararlılığını artırır.',
     clinical: 'Parkinson hastalığı tedavisinin temel taşı. DOPA-responsive distoniler. Akut kullanımda dramatik motor iyileşme.',
-    caution: 'On-off dalgalanmaları, diskinezi, dürtü kontrol bozukluğu, ortostatik hipotansiyon, halüsinasyon. Karbidopa olmadan periferik bulantı belirgin.'
+    caution: 'On-off dalgalanmaları, diskinezi, dürtü kontrol bozukluğu, ortostatik hipotansiyon, halüsinasyon. Karbidopa olmadan periferik bulantı belirgin.',
+    studies: ['ELLDOPA']
   },
   {
     id: 'mucuna', name: 'Mucuna pruriens', alias: 'Velvet bean · Doğal L-DOPA kaynağı',
@@ -1149,7 +1195,8 @@ const AGENTS = [
     effect: 'MAO-B inhibisyonu ile sinaptik DA yarı ömrünü uzatır.',
     mechanism: 'Düşük dozda (<10 mg/gün) MAO-B selektif; striatumda DA yıkımını yavaşlatır. Yüksek dozda MAO-A inhibisyonu da gelişir. Amfetamin metabolitleri üretir.',
     clinical: 'Parkinson erken evrede monoterapi; ileri evrede levodopa adjuvanı. Atipik depresyon (transdermal form, EMSAM).',
-    caution: 'Yüksek dozda diyetsel tiramin etkileşimi (hipertansif kriz). SSRI ile serotonin sendromu riski.'
+    caution: 'Yüksek dozda diyetsel tiramin etkileşimi (hipertansif kriz). SSRI ile serotonin sendromu riski.',
+    studies: ['DATATOP']
   },
   {
     id: 'rasa', name: 'Rasajilin', alias: 'Azilect · MAO-B selektif, ireversibl',
@@ -1159,7 +1206,8 @@ const AGENTS = [
     effect: 'Selektif MAO-B inhibisyonu; amfetamin metaboliti yapmaz.',
     mechanism: 'Selegiline benzer MAO-B selektif ireversibl inhibitör. Aksine amfetamin türevi metabolit oluşturmaz. Nöroprotektif etki tartışmalı (ADAGIO çalışması karışık sonuç).',
     clinical: 'Parkinson erken/orta evre. 1 mg/gün.',
-    caution: 'SSRI ile dikkatli kombinasyon. Tiramin etkileşimi tedavi dozunda klinik olarak nadir.'
+    caution: 'SSRI ile dikkatli kombinasyon. Tiramin etkileşimi tedavi dozunda klinik olarak nadir.',
+    studies: ['ADAGIO']
   },
   {
     id: 'safi', name: 'Safinamid', alias: 'Xadago · MAO-B + glutamat modülasyonu',
@@ -1280,7 +1328,8 @@ const AGENTS = [
     effect: 'DAT blokajı → sinaptik DA kalıcılığı uzar. ADHD\'nin birinci basamak farmakoterapisi.',
     mechanism: 'Dopamin transporterı (DAT) bloğu → reuptake azalır → sinaptik DA artar. PFC\'de DAT seyrek olduğundan oradaki etki kısmen NET inhibisyonu ile DA artışına bağlanır.',
     clinical: 'ADHD birinci basamak. Narkolepsi. Bilişsel performans için off-label kullanılır.',
-    caution: 'Hiperdopaminerjik kekemelik/Tourette\'i kötüleştirir. Bağımlılık potansiyeli (özellikle IR formlar). Kardiyovasküler risk.'
+    caution: 'Hiperdopaminerjik kekemelik/Tourette\'i kötüleştirir. Bağımlılık potansiyeli (özellikle IR formlar). Kardiyovasküler risk.',
+    studies: ['MTA']
   },
   {
     id: 'bup', name: 'Bupropion', alias: 'Wellbutrin, Zyban · NDRI',
@@ -1290,7 +1339,8 @@ const AGENTS = [
     effect: 'Norepinefrin-dopamin reuptake inhibitörü (NDRI).',
     mechanism: 'DAT ve NET üzerinden çalışan reuptake inhibitörü; ek olarak nikotinik asetilkolin reseptörü antagonisti. Bu kombinasyon sigara bırakma etkinliğini açıklar.',
     clinical: 'Atipik depresyon (özellikle hipersomnia, anhedoni), sigara bırakma, ADHD adjuvanı.',
-    caution: 'Konvülziyon eşiğini düşürür (anoreksi, bulimia, kafa travması öyküsü = kontrendike). SSRI\'lardan farklı olarak seksüel disfonksiyon yapmaz.'
+    caution: 'Konvülziyon eşiğini düşürür (anoreksi, bulimia, kafa travması öyküsü = kontrendike). SSRI\'lardan farklı olarak seksüel disfonksiyon yapmaz.',
+    studies: ['COCHRANE_BUP']
   },
   {
     id: 'mod', name: 'Modafinil', alias: 'Provigil · Atipik uyandırıcı',
@@ -1391,7 +1441,8 @@ const AGENTS = [
     effect: 'Lisin-d-amfetamin prodrug; eritrosit peptidazı ile aktif d-amfetamine dönüşür.',
     mechanism: 'Prodrug yapısı düzgün, kademeli salınım sağlar — pik-vadi farkını düşürür. Burundan çekme veya damar yoluyla suistimal güçleştirilmiş.',
     clinical: 'ADHD birinci basamak alternatifi (özellikle suistimal endişesi olan hastalarda). Binge-eating disorder onaylı.',
-    caution: 'Amfetamin yan etkileri; daha kademeli ama hala kontrol altında ilaç.'
+    caution: 'Amfetamin yan etkileri; daha kademeli ama hala kontrol altında ilaç.',
+    studies: ['LISDEX_BED']
   },
   {
     id: 'meth', name: 'Metamfetamin', alias: 'Desoxyn · Kristal meth',
@@ -1411,7 +1462,8 @@ const AGENTS = [
     effect: '5-HT salıverenliği DA\'dan baskın; "entaktojen" sınıfı.',
     mechanism: 'SERT > DAT > NET üzerinden reverse transport. Veziküler 5-HT, DA, NE depolarını boşaltır. Klasik amfetaminden farklı olarak 5-HT etkisi baskın → empatojenik subjektif etki.',
     clinical: 'FAZ III çalışmalar travma sonrası stres bozukluğunda terapi-asistanı olarak (FDA onayı tartışmalı, 2024).',
-    caution: 'Hipertermi, hiponatremi, 5-HT toksisitesi, kalıcı serotonerjik nörotoksisite hayvan modellerinde. SSRI ile etkileşim.'
+    caution: 'Hipertermi, hiponatremi, 5-HT toksisitesi, kalıcı serotonerjik nörotoksisite hayvan modellerinde. SSRI ile etkileşim.',
+    studies: ['MAPP1']
   },
 
   {
@@ -1422,7 +1474,8 @@ const AGENTS = [
     effect: 'Direkt D2 agonisti.',
     mechanism: 'Ergot türevi D2 reseptör agonisti (D3, D1 üzerinde de aktivite var). Tuberoinfundibular sistemde D2 aktivasyonu prolaktini baskılar.',
     clinical: 'Prolaktinoma, hiperprolaktinemi, post-partum laktasyon supresyonu. Geçmişte Parkinson, şimdi nadir.',
-    caution: 'Kardiyak valvulopati (ergot türevleri), pulmoner fibrozis, ortostatik hipotansiyon. Modern pratikte daha çok kabergolin tercih edilir.'
+    caution: 'Kardiyak valvulopati (ergot türevleri), pulmoner fibrozis, ortostatik hipotansiyon. Modern pratikte daha çok kabergolin tercih edilir.',
+    studies: ['CABERGOLINE']
   },
   {
     id: 'prami', name: 'Pramipeksol', alias: 'Mirapex · D2/D3 selektif',
@@ -1472,7 +1525,8 @@ const AGENTS = [
     effect: 'Haftada 1–2 doz yeterli; prolaktinoma altın standardı.',
     mechanism: 'Ergot türevi D2 selektif agonist; çok uzun yarı ömür (60–100 saat).',
     clinical: 'Prolaktinoma, hiperprolaktinemi. Bromokriptinden daha etkili, daha az yan etki.',
-    caution: 'Yüksek dozda (Parkinson dozu) valvulopati riski; düşük endokrin dozlarda risk düşüktür ama ekokardiyografi takibi önerilir.'
+    caution: 'Yüksek dozda (Parkinson dozu) valvulopati riski; düşük endokrin dozlarda risk düşüktür ama ekokardiyografi takibi önerilir.',
+    studies: ['CABERGOLINE']
   },
 
   {
@@ -1513,7 +1567,8 @@ const AGENTS = [
     effect: 'Multireseptör antagonist; metabolik yan etkiler belirgin.',
     mechanism: 'D2, 5-HT2A, H1, M, α1 antagonisti. Risperidondan EPS riski daha düşük, ama metabolik yan etkiler (kilo, lipid, glukoz) en yüksek.',
     clinical: 'Şizofreni, bipolar mani, kanser kemoterapi bulantısı (off-label, çok etkili).',
-    caution: 'Belirgin kilo alımı, diabetogenez, dislipidemi, sedasyon. Tedaviye uyum metabolik yan etkilerle güçleşir.'
+    caution: 'Belirgin kilo alımı, diabetogenez, dislipidemi, sedasyon. Tedaviye uyum metabolik yan etkilerle güçleşir.',
+    studies: ['CATIE']
   },
   {
     id: 'quet', name: 'Ketiapin', alias: 'Seroquel · Atipik · Düşük doz uyku, yüksek doz antipsikotik',
@@ -1533,7 +1588,8 @@ const AGENTS = [
     effect: 'Düşük D2 afinitesi + geniş reseptör profili; EPS yok.',
     mechanism: 'D2 afinitesi diğerlerinden düşük (D4 ve 5-HT2A daha baskın). EPS yapmaz, prolaktini değiştirmez. Refrakter şizofrenide en etkili antipsikotik.',
     clinical: 'Refrakter şizofreni (3. basamak), şizofrenide intihar önleme onaylı.',
-    caution: 'Agranülositoz (haftalık-aylık tam kan sayımı zorunlu), miyokardit, konvülziyon, ağır sialore, ileus.'
+    caution: 'Agranülositoz (haftalık-aylık tam kan sayımı zorunlu), miyokardit, konvülziyon, ağır sialore, ileus.',
+    studies: ['InterSePT']
   },
   {
     id: 'arip', name: 'Aripiprazol', alias: 'Abilify · D2 parsiyel agonisti',
@@ -1655,6 +1711,69 @@ const PATHWAY_LABELS = {
   tuberoinfundibular: 'Tuberoinfundibular'
 };
 
+const STUDIES = {
+  ELLDOPA: {
+    cite: 'Fahn S et al. N Engl J Med 2004;351(24):2498–508',
+    note: '361 erken Parkinson hastası, 40 hafta randomize. Levodopa UPDRS düşüşünde plaseboya doza-bağımlı üstün; nöro-görüntülemede striatal DAT bağlanması düşüşü tartışmaya yol açtı (ELLDOPA).',
+    doi: '10.1056/NEJMoa033447',
+    pmid: '15590952'
+  },
+  ADAGIO: {
+    cite: 'Olanow CW et al. N Engl J Med 2009;361(13):1268–78',
+    note: '1176 tedavi-naif erken Parkinson hastasında çift-kör delayed-start tasarımı. Rasajilin 1 mg/gün hastalık-modifiye edici etki ile uyumlu sonuç verdi; 2 mg/gün etmedi (ADAGIO).',
+    doi: '10.1056/NEJMoa0809335',
+    pmid: '19776408'
+  },
+  DATATOP: {
+    cite: 'The Parkinson Study Group. N Engl J Med 1989;321(20):1364–71',
+    note: '800 erken, tedavi-naif Parkinson hastasında 2×2 faktöriyel tasarım. Selegilin (deprenil) 10 mg/gün, levodopa başlama ihtiyacını %57 azalttı (DATATOP).',
+    doi: '10.1056/NEJM198911163212004',
+    pmid: '2509910'
+  },
+  MTA: {
+    cite: 'The MTA Cooperative Group. Arch Gen Psychiatry 1999;56(12):1073–86',
+    note: '579 ADHD\'li çocukta 14 aylık RKÇ. Titre edilen metilfenidat-bazlı medikasyon yönetimi, davranış terapisi ve toplum bakımına anlamlı üstün (MTA).',
+    doi: '10.1001/archpsyc.56.12.1073',
+    pmid: '10591283'
+  },
+  CATIE: {
+    cite: 'Lieberman JA et al. N Engl J Med 2005;353(12):1209–23',
+    note: '1493 kronik şizofreni hastasında olanzapin, perfenazin, ketiapin, risperidon, ziprasidon karşılaştırması. Olanzapin tedavide kalma süresinde üstün ama metabolik yan etkilerle (CATIE).',
+    doi: '10.1056/NEJMoa051688',
+    pmid: '16172203'
+  },
+  InterSePT: {
+    cite: 'Meltzer HY et al. Arch Gen Psychiatry 2003;60(1):82–91',
+    note: '980 yüksek intihar riskli şizofreni/şizoafektif hastada 2 yıllık karşılaştırma. Klozapin, olanzapine kıyasla intihar girişimi ve müdahale gereksinimini anlamlı azalttı (InterSePT).',
+    doi: '10.1001/archpsyc.60.1.82',
+    pmid: '12511175'
+  },
+  MAPP1: {
+    cite: 'Mitchell JM et al. Nat Med 2021;27(6):1025–33',
+    note: '90 ağır TSSB hastasında MDMA-destekli terapi Faz 3 RKÇ. CAPS-5 ölçeğinde plaseboya anlamlı üstün (d=0.91), suistimal/intihar sinyali görülmedi (MAPP1).',
+    doi: '10.1038/s41591-021-01336-3',
+    pmid: '33972795'
+  },
+  CABERGOLINE: {
+    cite: 'Webster J et al. N Engl J Med 1994;331(14):904–9',
+    note: '459 hiperprolaktinemik amenoreli kadında kabergolin vs bromokriptin. Kabergolin stabil normoprolaktinemiyi %83\'e karşı %59 oranında ulaştırdı, GİS yan etkisi daha az.',
+    doi: '10.1056/NEJM199410063311403',
+    pmid: '7915824'
+  },
+  COCHRANE_BUP: {
+    cite: 'Hughes JR et al. Cochrane Database Syst Rev 2014;(1):CD000031',
+    note: '90 RKÇ\'lik meta-analizde bupropion tek başına uzun-dönem sigara bırakma şansını anlamlı artırdı (44 çalışma, n=13,728, RR 1.62, %95 GA 1.49–1.76).',
+    doi: '10.1002/14651858.CD000031.pub4',
+    pmid: '24402784'
+  },
+  LISDEX_BED: {
+    cite: 'McElroy SL et al. JAMA Psychiatry 2015;72(3):235–46',
+    note: '259 orta-ağır binge-eating disorder hastasında lisdeksamfetamin 50 ve 70 mg/gün, plaseboya kıyasla BE-günü ve 4-haftalık BE-kessasyonunu anlamlı azalttı.',
+    doi: '10.1001/jamapsychiatry.2014.2162',
+    pmid: '25587645'
+  }
+};
+
 // =========== STATE ===========
 let state = {
   selectedId: null,
@@ -1664,7 +1783,6 @@ let state = {
 
 // =========== INIT ===========
 function init() {
-  document.getElementById('stat-total').textContent = AGENTS.length;
   buildCategoryFilters();
   renderCards();
   attachEvents();
@@ -1747,6 +1865,26 @@ function showDetail(id) {
     ? agent.regions.map(r => `<span class="target-tag">${PATHWAY_LABELS[r] || r}</span>`).join('')
     : '<span class="target-tag" style="opacity:0.6;">—</span>';
 
+  const studiesHtml = (agent.studies && agent.studies.length)
+    ? `<div class="detail-block">
+         <h4>Anahtar çalışmalar</h4>
+         <div class="studies">
+           ${agent.studies.map(sid => {
+             const s = STUDIES[sid];
+             if (!s) return '';
+             return `<div class="study">
+               <div class="study-cite">${s.cite}</div>
+               <div class="study-note">${s.note}</div>
+               <div class="study-links">
+                 <a href="https://doi.org/${s.doi}" target="_blank" rel="noopener">DOI</a>
+                 <a href="https://pubmed.ncbi.nlm.nih.gov/${s.pmid}/" target="_blank" rel="noopener">PMID ${s.pmid}</a>
+               </div>
+             </div>`;
+           }).join('')}
+         </div>
+       </div>`
+    : '';
+
   const html = `
     <div class="detail-cat" style="--cat: var(--cat-${agent.category}); color: var(--cat-${agent.category});">
       <span class="dot"></span>${CATEGORIES[agent.category].label}
@@ -1763,6 +1901,7 @@ function showDetail(id) {
       <p>${agent.clinical}</p>
     </div>
     ${agent.caution ? `<div class="detail-block caution"><h4>Uyarı &amp; etkileşim</h4><p>${agent.caution}</p></div>` : ''}
+    ${studiesHtml}
     <div class="detail-block">
       <h4>Moleküler hedef</h4>
       <div class="detail-targets">${targetTagsHtml}</div>
